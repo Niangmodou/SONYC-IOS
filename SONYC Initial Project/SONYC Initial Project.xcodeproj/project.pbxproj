@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		52D5C1AB2490303400931BD5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5C1AA2490303400931BD5 /* AppDelegate.swift */; };
+		52D5C1AD2490303400931BD5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5C1AC2490303400931BD5 /* SceneDelegate.swift */; };
+		52D5C1AF2490303400931BD5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5C1AE2490303400931BD5 /* ContentView.swift */; };
+		52D5C1B12490303800931BD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D5C1B02490303800931BD5 /* Assets.xcassets */; };
+		52D5C1B42490303800931BD5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52D5C1B32490303800931BD5 /* Preview Assets.xcassets */; };
+		52D5C1B72490303800931BD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52D5C1B52490303800931BD5 /* LaunchScreen.storyboard */; };
+		52D5C1C22490303800931BD5 /* SONYC_Initial_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5C1C12490303800931BD5 /* SONYC_Initial_ProjectTests.swift */; };
+		52D5C1CD2490303800931BD5 /* SONYC_Initial_ProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52D5C1CC2490303800931BD5 /* SONYC_Initial_ProjectUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		52D5C1BE2490303800931BD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D5C19F2490303400931BD5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52D5C1A62490303400931BD5;
+			remoteInfo = "SONYC Initial Project";
+		};
+		52D5C1C92490303800931BD5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 52D5C19F2490303400931BD5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52D5C1A62490303400931BD5;
+			remoteInfo = "SONYC Initial Project";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		52D5C1A72490303400931BD5 /* SONYC Initial Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SONYC Initial Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D5C1AA2490303400931BD5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		52D5C1AC2490303400931BD5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		52D5C1AE2490303400931BD5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		52D5C1B02490303800931BD5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		52D5C1B32490303800931BD5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		52D5C1B62490303800931BD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		52D5C1B82490303800931BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52D5C1BD2490303800931BD5 /* SONYC Initial ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SONYC Initial ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D5C1C12490303800931BD5 /* SONYC_Initial_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SONYC_Initial_ProjectTests.swift; sourceTree = "<group>"; };
+		52D5C1C32490303800931BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52D5C1C82490303800931BD5 /* SONYC Initial ProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SONYC Initial ProjectUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		52D5C1CC2490303800931BD5 /* SONYC_Initial_ProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SONYC_Initial_ProjectUITests.swift; sourceTree = "<group>"; };
+		52D5C1CE2490303800931BD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		52D5C1A42490303400931BD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D5C1BA2490303800931BD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D5C1C52490303800931BD5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		52D5C19E2490303400931BD5 = {
+			isa = PBXGroup;
+			children = (
+				52D5C1A92490303400931BD5 /* SONYC Initial Project */,
+				52D5C1C02490303800931BD5 /* SONYC Initial ProjectTests */,
+				52D5C1CB2490303800931BD5 /* SONYC Initial ProjectUITests */,
+				52D5C1A82490303400931BD5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		52D5C1A82490303400931BD5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				52D5C1A72490303400931BD5 /* SONYC Initial Project.app */,
+				52D5C1BD2490303800931BD5 /* SONYC Initial ProjectTests.xctest */,
+				52D5C1C82490303800931BD5 /* SONYC Initial ProjectUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		52D5C1A92490303400931BD5 /* SONYC Initial Project */ = {
+			isa = PBXGroup;
+			children = (
+				52D5C1AA2490303400931BD5 /* AppDelegate.swift */,
+				52D5C1AC2490303400931BD5 /* SceneDelegate.swift */,
+				52D5C1AE2490303400931BD5 /* ContentView.swift */,
+				52D5C1B02490303800931BD5 /* Assets.xcassets */,
+				52D5C1B52490303800931BD5 /* LaunchScreen.storyboard */,
+				52D5C1B82490303800931BD5 /* Info.plist */,
+				52D5C1B22490303800931BD5 /* Preview Content */,
+			);
+			path = "SONYC Initial Project";
+			sourceTree = "<group>";
+		};
+		52D5C1B22490303800931BD5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				52D5C1B32490303800931BD5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		52D5C1C02490303800931BD5 /* SONYC Initial ProjectTests */ = {
+			isa = PBXGroup;
+			children = (
+				52D5C1C12490303800931BD5 /* SONYC_Initial_ProjectTests.swift */,
+				52D5C1C32490303800931BD5 /* Info.plist */,
+			);
+			path = "SONYC Initial ProjectTests";
+			sourceTree = "<group>";
+		};
+		52D5C1CB2490303800931BD5 /* SONYC Initial ProjectUITests */ = {
+			isa = PBXGroup;
+			children = (
+				52D5C1CC2490303800931BD5 /* SONYC_Initial_ProjectUITests.swift */,
+				52D5C1CE2490303800931BD5 /* Info.plist */,
+			);
+			path = "SONYC Initial ProjectUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		52D5C1A62490303400931BD5 /* SONYC Initial Project */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52D5C1D12490303800931BD5 /* Build configuration list for PBXNativeTarget "SONYC Initial Project" */;
+			buildPhases = (
+				52D5C1A32490303400931BD5 /* Sources */,
+				52D5C1A42490303400931BD5 /* Frameworks */,
+				52D5C1A52490303400931BD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SONYC Initial Project";
+			productName = "SONYC Initial Project";
+			productReference = 52D5C1A72490303400931BD5 /* SONYC Initial Project.app */;
+			productType = "com.apple.product-type.application";
+		};
+		52D5C1BC2490303800931BD5 /* SONYC Initial ProjectTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52D5C1D42490303800931BD5 /* Build configuration list for PBXNativeTarget "SONYC Initial ProjectTests" */;
+			buildPhases = (
+				52D5C1B92490303800931BD5 /* Sources */,
+				52D5C1BA2490303800931BD5 /* Frameworks */,
+				52D5C1BB2490303800931BD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52D5C1BF2490303800931BD5 /* PBXTargetDependency */,
+			);
+			name = "SONYC Initial ProjectTests";
+			productName = "SONYC Initial ProjectTests";
+			productReference = 52D5C1BD2490303800931BD5 /* SONYC Initial ProjectTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		52D5C1C72490303800931BD5 /* SONYC Initial ProjectUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 52D5C1D72490303800931BD5 /* Build configuration list for PBXNativeTarget "SONYC Initial ProjectUITests" */;
+			buildPhases = (
+				52D5C1C42490303800931BD5 /* Sources */,
+				52D5C1C52490303800931BD5 /* Frameworks */,
+				52D5C1C62490303800931BD5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				52D5C1CA2490303800931BD5 /* PBXTargetDependency */,
+			);
+			name = "SONYC Initial ProjectUITests";
+			productName = "SONYC Initial ProjectUITests";
+			productReference = 52D5C1C82490303800931BD5 /* SONYC Initial ProjectUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		52D5C19F2490303400931BD5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = modouniang;
+				TargetAttributes = {
+					52D5C1A62490303400931BD5 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					52D5C1BC2490303800931BD5 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 52D5C1A62490303400931BD5;
+					};
+					52D5C1C72490303800931BD5 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 52D5C1A62490303400931BD5;
+					};
+				};
+			};
+			buildConfigurationList = 52D5C1A22490303400931BD5 /* Build configuration list for PBXProject "SONYC Initial Project" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 52D5C19E2490303400931BD5;
+			productRefGroup = 52D5C1A82490303400931BD5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				52D5C1A62490303400931BD5 /* SONYC Initial Project */,
+				52D5C1BC2490303800931BD5 /* SONYC Initial ProjectTests */,
+				52D5C1C72490303800931BD5 /* SONYC Initial ProjectUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		52D5C1A52490303400931BD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52D5C1B72490303800931BD5 /* LaunchScreen.storyboard in Resources */,
+				52D5C1B42490303800931BD5 /* Preview Assets.xcassets in Resources */,
+				52D5C1B12490303800931BD5 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D5C1BB2490303800931BD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D5C1C62490303800931BD5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		52D5C1A32490303400931BD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52D5C1AB2490303400931BD5 /* AppDelegate.swift in Sources */,
+				52D5C1AD2490303400931BD5 /* SceneDelegate.swift in Sources */,
+				52D5C1AF2490303400931BD5 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D5C1B92490303800931BD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52D5C1C22490303800931BD5 /* SONYC_Initial_ProjectTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		52D5C1C42490303800931BD5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				52D5C1CD2490303800931BD5 /* SONYC_Initial_ProjectUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		52D5C1BF2490303800931BD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52D5C1A62490303400931BD5 /* SONYC Initial Project */;
+			targetProxy = 52D5C1BE2490303800931BD5 /* PBXContainerItemProxy */;
+		};
+		52D5C1CA2490303800931BD5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 52D5C1A62490303400931BD5 /* SONYC Initial Project */;
+			targetProxy = 52D5C1C92490303800931BD5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		52D5C1B52490303800931BD5 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				52D5C1B62490303800931BD5 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		52D5C1CF2490303800931BD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		52D5C1D02490303800931BD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		52D5C1D22490303800931BD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SONYC Initial Project/Preview Content\"";
+				DEVELOPMENT_TEAM = WRXW3U8AZ5;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "SONYC Initial Project/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.modouniang.SONYC-Initial-Project";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		52D5C1D32490303800931BD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"SONYC Initial Project/Preview Content\"";
+				DEVELOPMENT_TEAM = WRXW3U8AZ5;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "SONYC Initial Project/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.modouniang.SONYC-Initial-Project";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		52D5C1D52490303800931BD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WRXW3U8AZ5;
+				INFOPLIST_FILE = "SONYC Initial ProjectTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.modouniang.SONYC-Initial-ProjectTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SONYC Initial Project.app/SONYC Initial Project";
+			};
+			name = Debug;
+		};
+		52D5C1D62490303800931BD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WRXW3U8AZ5;
+				INFOPLIST_FILE = "SONYC Initial ProjectTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.modouniang.SONYC-Initial-ProjectTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SONYC Initial Project.app/SONYC Initial Project";
+			};
+			name = Release;
+		};
+		52D5C1D82490303800931BD5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WRXW3U8AZ5;
+				INFOPLIST_FILE = "SONYC Initial ProjectUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.modouniang.SONYC-Initial-ProjectUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "SONYC Initial Project";
+			};
+			name = Debug;
+		};
+		52D5C1D92490303800931BD5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = WRXW3U8AZ5;
+				INFOPLIST_FILE = "SONYC Initial ProjectUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.modouniang.SONYC-Initial-ProjectUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "SONYC Initial Project";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		52D5C1A22490303400931BD5 /* Build configuration list for PBXProject "SONYC Initial Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D5C1CF2490303800931BD5 /* Debug */,
+				52D5C1D02490303800931BD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52D5C1D12490303800931BD5 /* Build configuration list for PBXNativeTarget "SONYC Initial Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D5C1D22490303800931BD5 /* Debug */,
+				52D5C1D32490303800931BD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52D5C1D42490303800931BD5 /* Build configuration list for PBXNativeTarget "SONYC Initial ProjectTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D5C1D52490303800931BD5 /* Debug */,
+				52D5C1D62490303800931BD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		52D5C1D72490303800931BD5 /* Build configuration list for PBXNativeTarget "SONYC Initial ProjectUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52D5C1D82490303800931BD5 /* Debug */,
+				52D5C1D92490303800931BD5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 52D5C19F2490303400931BD5 /* Project object */;
+}
