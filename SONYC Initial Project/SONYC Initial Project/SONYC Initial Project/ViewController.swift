@@ -10,17 +10,20 @@
 import UIKit
 import AVFoundation
 
-class ViewController : UIViewController, AVAudioRecorderDelegate {
+class ViewController : UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource {
+    
     //Variables for recording session and audio recorder
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
+    var audioPlayer: AVAudioPlayer!
     
     //Variable to track number of current recordings
     var numRecords : Int = 0
     
     //Outlet for Button
     @IBOutlet weak var button: UIButton!
-    
+    //Outlet for table view
+    @IBOutlet weak var myTableView: UITableView!
     //Action for record button
     @IBAction func record(_ sender: Any) {
         //Check for active recording
@@ -49,6 +52,9 @@ class ViewController : UIViewController, AVAudioRecorderDelegate {
             audioRecorder.stop()
             audioRecorder = nil
             
+            //Refresh table to show new recordings
+            myTableView.reloadData()
+            
             //Saving number of recording to user defaults
             UserDefaults.standard.set(numRecords, forKey: "myNumber")
             button.setTitle("Record Sound", for: .normal)
@@ -71,8 +77,6 @@ class ViewController : UIViewController, AVAudioRecorderDelegate {
                 print("Accepted")
             }
         }
-        
-        //UI Button for user to record
     }
     
     //Gets path to directory
@@ -89,6 +93,30 @@ class ViewController : UIViewController, AVAudioRecorderDelegate {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "dismiss", style: .default, handler: nil))
         present(alert, animated:true, completion: nil)
+    }
+    
+    //Setting Up TableView
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return numRecords
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = String("Recording #\(indexPath.row + 1)")
+        return cell
+    }
+    
+    //Listening to a tapped recording
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let path = getPathDirectory().appendingPathComponent("\(indexPath.row + 1).m4a")
+        
+        do{
+            //Set up audio player
+            audioPlayer = try AVAudioPlayer(contentsOf: path)
+            audioPlayer.play()
+        }catch{
+            
+        }
     }
 }
 
