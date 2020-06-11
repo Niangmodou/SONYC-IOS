@@ -24,6 +24,7 @@ class ViewController : UIViewController, AVAudioRecorderDelegate, UITableViewDel
     @IBOutlet weak var button: UIButton!
     //Outlet for table view
     @IBOutlet weak var myTableView: UITableView!
+    
     //Action for record button
     @IBAction func record(_ sender: Any) {
         //Check for active recording
@@ -100,10 +101,21 @@ class ViewController : UIViewController, AVAudioRecorderDelegate, UITableViewDel
         return numRecords
     }
     
+    //Inserting a new recording to tableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = String("Recording #\(indexPath.row + 1)")
+        
         return cell
+    }
+    
+    //Remove a recording by swiping right
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            numRecords -= 1
+            myTableView.deleteRows(at: [indexPath], with: .fade)
+            myTableView.reloadData()
+        }
     }
     
     //Listening to a tapped recording
