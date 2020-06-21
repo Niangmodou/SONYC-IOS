@@ -23,6 +23,9 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDele
     //Variable to track current decibel
     var decibels : Float = 0.0
     
+    //Variable to update the sound meter every 0.1 seconds
+    var timer: Timer?
+    
     @IBOutlet weak var button: UIButton!
     
     @IBOutlet weak var myTableView: UITableView!
@@ -44,10 +47,9 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDele
                 do {
                     audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
                     audioRecorder.delegate = self
-                    audioRecorder.isMeteringEnabled = true
                     
-                    audioRecorder.record()
-                    decibels = calculateSPL(audioRecorder: audioRecorder)
+                    startMonitoring()
+                    //decibels = calculateSPL(audioRecorder: audioRecorder)
                     
                     //Refresh table to show new recording
                     myTableView.reloadData()
@@ -60,15 +62,27 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDele
                 }
             }else{
                 //Stop Recording
-                audioRecorder.stop()
-                audioRecorder = nil
-            
-                //Refresh table to show new recording
-                myTableView.reloadData()
+                stopMonitoring()
                 
                 button.setTitle("Record Sound", for: .normal)
                 button.setTitleColor(UIColor.blue, for: .normal)
         }
+    }
+    
+    func startMonitoring(){
+        audioRecorder.isMeteringEnabled = true
+        audioRecorder.record()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: {(timer) in
+            self.decibels = self.calculateSPL(audioRecorder: self.audioRecorder)
+            
+            //Refresh table to show new recording
+            self.myTableView.reloadData()
+        })
+    }
+    
+    func stopMonitoring() {
+        audioRecorder.stop()
+        audioRecorder = nil
     }
     
     func update(){
@@ -78,11 +92,13 @@ class ViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDele
     }
     
     func calculateSPL(audioRecorder : AVAudioRecorder) -> Float {
-        audioRecorder.updateMeters()
+        update()
         //Get Current decibels for sound
-        decibels = audioRecorder.averagePower(forChannel: 0)
+        let spl = audioRecorder.averagePower(forChannel: 0)
+        print(spl)
+        let decibels : Float = pow(10.0, spl/20.0) * 20//20 * log10(spl)
     
-        return abs(decibels)
+        return decibels
     }
 
     //Gets path to directory
