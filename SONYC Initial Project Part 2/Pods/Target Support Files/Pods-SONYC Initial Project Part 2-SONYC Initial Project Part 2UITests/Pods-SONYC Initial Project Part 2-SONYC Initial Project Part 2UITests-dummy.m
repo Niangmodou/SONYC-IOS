@@ -1,0 +1,5 @@
+#import <Foundation/Foundation.h>
+@interface PodsDummy_Pods_SONYC_Initial_Project_Part_2_SONYC_Initial_Project_Part_2UITests : NSObject
+@end
+@implementation PodsDummy_Pods_SONYC_Initial_Project_Part_2_SONYC_Initial_Project_Part_2UITests
+@end
