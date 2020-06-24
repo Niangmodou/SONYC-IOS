@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class SecondViewController: UIViewController, AVAudioRecorderDelegate, UITableViewDelegate, UITableViewDataSource{
+class SecondViewController: UIViewController, AVAudioRecorderDelegate{
     
     var avgDecibels = 0
     var minDecibels = 0
@@ -33,24 +33,18 @@ class SecondViewController: UIViewController, AVAudioRecorderDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        recordings.append(currPath)
+        myTableView.delegate = self
+        myTableView.dataSource = self
     }
     
-    func addNewRecording(decibel: Int) {
-        decibels.append(decibel)
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return decibels.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = String("Decibel: \(decibels[0])")//String("Recording #\(indexPath.row + 1)")
+    func addNewRecording(filePath: URL) {
+        recordings.append(filePath)
         
-        return cell
+        print(recordings.count)
     }
-    
+}
+
+extension SecondViewController: UITableViewDelegate {
     //Listening to a tapped recording
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         do{
@@ -60,6 +54,19 @@ class SecondViewController: UIViewController, AVAudioRecorderDelegate, UITableVi
         }catch{
             
         }
+    }
+}
+
+extension SecondViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return recordings.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = String("Recording #\(indexPath.row + 1)")
+        
+        return cell
     }
 }
 

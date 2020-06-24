@@ -67,7 +67,6 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         if audioRecorder == nil {
             let fileName = getPathDirectory().appendingPathComponent("test.m4a")
                 path = fileName
-            
                 //Define settings for current recording
                 let settings = [
                     AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -100,7 +99,7 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
     //Function to start voice and decibel monitoring
     func startMonitoring(){
         audioRecorder.isMeteringEnabled = true
-        audioRecorder.record()
+        audioRecorder.record(forDuration: 10)
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: {(timer) in
             if self.audioRecorder != nil {
                 self.decibels = self.calculateSPL(audioRecorder: self.audioRecorder)
@@ -138,9 +137,10 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         secondView.maxDecibels = maxDecibels
         
         //Sending file path of current recording to second view controller
-        secondView.currPath = path
+        //secondView.currPath = path
         
-        //secondView.addNewRecording(decibel: 75)
+        //secondView.myTableView.reloadData()
+        secondView.addNewRecording(filePath: path)
        //secondView.myTableView.reloadData()
         
     }
