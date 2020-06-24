@@ -38,7 +38,10 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         
         return label
     }()
-
+    
+    //Varialbe to store path of current recording
+    var path: URL!
+    
     //Variables for storing recording session and audio recorder
     var recordingSession: AVAudioSession!
     var audioRecorder: AVAudioRecorder!
@@ -63,7 +66,8 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         //Check for active recording
         if audioRecorder == nil {
             let fileName = getPathDirectory().appendingPathComponent("test.m4a")
-                
+                path = fileName
+            
                 //Define settings for current recording
                 let settings = [
                     AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -128,9 +132,14 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let secondView = segue.destination as! SecondViewController
         
+        //Sending recording information to second view controller
         secondView.avgDecibels = avgDecibels
         secondView.minDecibels = minDecibels
         secondView.maxDecibels = maxDecibels
+        
+        //Sending file path of current recording to second view controller
+        secondView.currPath = path
+        
         //secondView.addNewRecording(decibel: 75)
        //secondView.myTableView.reloadData()
         

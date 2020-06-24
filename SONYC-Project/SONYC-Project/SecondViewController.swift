@@ -16,6 +16,8 @@ class SecondViewController: UIViewController, AVAudioRecorderDelegate, UITableVi
     var maxDecibels = 0
     
     var decibels: [Int] = []
+    
+    var recordings: [URL] = []
     //Outlet for table view
      @IBOutlet weak var myTableView: UITableView!
     
@@ -25,9 +27,13 @@ class SecondViewController: UIViewController, AVAudioRecorderDelegate, UITableVi
     //Variables for audio player
     var audioPlayer: AVAudioPlayer!
     
+    //Variable to store path for current audio file
+    var currPath: URL!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        recordings.append(currPath)
     }
     
     func addNewRecording(decibel: Int) {
@@ -43,6 +49,17 @@ class SecondViewController: UIViewController, AVAudioRecorderDelegate, UITableVi
         cell.textLabel?.text = String("Decibel: \(decibels[0])")//String("Recording #\(indexPath.row + 1)")
         
         return cell
+    }
+    
+    //Listening to a tapped recording
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        do{
+            //Set up audio player
+            audioPlayer = try AVAudioPlayer(contentsOf: currPath)
+            audioPlayer.play()
+        }catch{
+            
+        }
     }
 }
 
