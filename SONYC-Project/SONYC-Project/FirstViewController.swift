@@ -114,13 +114,11 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         avgDecibels = getAvgDecibel()
         minDecibels = getMinDecibel()
         maxDecibels = getMaxDecibel()
-        print("Average: ",avgDecibels)
-        print("Minimum: ",minDecibels)
-        print("Maximum: ",maxDecibels)
         
         //Clear Decibel Readings for session
         decibelReadings.removeAll()
         
+        //Performing Segue to send data to second viewcontroller
         self.performSegue(withIdentifier: "pipeline", sender: self)
     }
     
