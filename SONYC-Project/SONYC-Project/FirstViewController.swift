@@ -131,17 +131,10 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let secondView = segue.destination as! SecondViewController
         
-        //Sending recording information to second view controller
-        secondView.avgDecibels = avgDecibels
-        secondView.minDecibels = minDecibels
-        secondView.maxDecibels = maxDecibels
+        //Sending recording information to SecondViewController
+        secondView.addNewRecording(filePath: path, avg: avgDecibels, min: minDecibels, max: maxDecibels)
         
-        //Sending file path of current recording to second view controller
-        //secondView.currPath = path
         
-        //secondView.myTableView.reloadData()
-        secondView.addNewRecording(filePath: path)
-       //secondView.myTableView.reloadData()
         
     }
     

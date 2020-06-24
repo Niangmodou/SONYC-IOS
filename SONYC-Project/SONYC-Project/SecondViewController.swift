@@ -11,13 +11,9 @@ import AVFoundation
 
 class SecondViewController: UIViewController, AVAudioRecorderDelegate{
     
-    var avgDecibels = 0
-    var minDecibels = 0
-    var maxDecibels = 0
+    //Dictionary to store recordings information. {FilePath:[Avg,Min,Max]}
+    var recordings: [URL: [Int]] = [:]
     
-    var decibels: [Int] = []
-    
-    var recordings: [URL] = []
     //Outlet for table view
      @IBOutlet weak var myTableView: UITableView!
     
@@ -37,8 +33,14 @@ class SecondViewController: UIViewController, AVAudioRecorderDelegate{
         myTableView.dataSource = self
     }
     
-    func addNewRecording(filePath: URL) {
-        recordings.append(filePath)
+    func addNewRecording(filePath: URL, avg: Int, min: Int, max: Int) {
+        var decibelArray: [Int] = []
+        //Creating array to store decibel readings for current recording
+        decibelArray.append(avg)
+        decibelArray.append(min)
+        decibelArray.append(max)
+        
+        recordings[filePath] = decibelArray
         
         print(recordings.count)
     }
@@ -48,8 +50,12 @@ extension SecondViewController: UITableViewDelegate {
     //Listening to a tapped recording
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         do{
-            //Set up audio player
-            audioPlayer = try AVAudioPlayer(contentsOf: currPath)
+            //Getting index of the tapped recording
+            let intIndex = indexPath.row
+            let index = recordings.index(recordings.startIndex, offsetBy: intIndex)
+            
+            //Getting audio of specified index
+            audioPlayer = try AVAudioPlayer(contentsOf: recordings[index].key)
             audioPlayer.play()
         }catch{
             
@@ -70,3 +76,12 @@ extension SecondViewController: UITableViewDataSource{
     }
 }
 
+/*
+ TO-DO____________
+1. fix overrite audio issue
+2. create a dictionary for audio data
+3. audio is playing
+4. tableview style
+5. succesful deletions
+6. decibel readings
+ */
