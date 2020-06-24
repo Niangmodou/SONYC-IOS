@@ -110,6 +110,8 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         audioRecorder = nil
         
         decibels = 0
+        self.label.text = "\(decibels)dB"
+        shapeLayer.strokeEnd = 0
         
         avgDecibels = getAvgDecibel()
         minDecibels = getMinDecibel()
@@ -171,6 +173,7 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         return avg
     }
     
+    //Function to update the audio recorder and text
     func update(){
         if let audioRecorder = audioRecorder {
             audioRecorder.updateMeters()
@@ -183,9 +186,9 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
     //Function to calculate the decibels
     func calculateSPL(audioRecorder : AVAudioRecorder) -> Int {
         update()
+        
         //Get Current decibels for sound
         let spl = audioRecorder.averagePower(forChannel: 0)
-        print(spl)
         let decibels : Int = Int(abs(spl))//pow(10.0, spl/20.0) * 20//20 * log10(spl)
     
         return decibels
@@ -216,6 +219,7 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
     }
     
+    //Function to update gauge after decibel change
     private func updateMeter() {
         shapeLayer.strokeEnd = 0
         
@@ -226,7 +230,6 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         }
     }
  
-    
     //Function to get current percent of gauge fill
     func getPercent() -> Float {
         let decibelRatio = Float(decibels)/120
@@ -234,6 +237,7 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         return (decibelRatio*90)/120
     }
     
+    //Function to create the decibel gauge
     fileprivate func createDecibelGauge() {
         let center = view.center
         
@@ -257,7 +261,6 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         
         //Gauge ShapeLayer configurations
         shapeLayer.path = circularPath.cgPath
-        
         shapeLayer.strokeColor = getColorByHex(rgbHexValue:0x32659F).cgColor
         shapeLayer.lineWidth = 15
         shapeLayer.fillColor = UIColor.clear.cgColor
