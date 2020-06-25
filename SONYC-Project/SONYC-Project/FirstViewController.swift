@@ -14,6 +14,7 @@ import Foundation
 import CoreAudio
 import CoreAudioKit
 import AVKit
+import CoreData
 
 class FirstViewController: UIViewController, AVAudioRecorderDelegate{
     
@@ -40,7 +41,7 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
     }()
     
     //Varialbe to store path of current recording
-    var path: URL!
+    var path: String = ""
     
     //Variables for storing recording session and audio recorder
     var recordingSession: AVAudioSession!
@@ -66,7 +67,8 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         //Check for active recording
         if audioRecorder == nil {
             let fileName = getPathDirectory().appendingPathComponent("test.m4a")
-                path = fileName
+                path = fileName.absoluteString
+    
                 //Define settings for current recording
                 let settings = [
                     AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -108,14 +110,17 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         })
     }
     
+    //Function to stop current audio recording
     func stopMonitoring() {
         audioRecorder.stop()
         audioRecorder = nil
         
+        //Resetting decibels alongside decibel gauge
         decibels = 0
         self.label.text = "\(decibels)dB"
         shapeLayer.strokeEnd = 0
         
+        //Getting decibel readings for current session
         avgDecibels = getAvgDecibel()
         minDecibels = getMinDecibel()
         maxDecibels = getMaxDecibel()
@@ -123,19 +128,45 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         //Clear Decibel Readings for session
         decibelReadings.removeAll()
         
+        //Saving recording data to CoreData
+        saveData(filePath: path, avg: avgDecibels, min: minDecibels, max: maxDecibels)
+        
         //Performing Segue to send data to second viewcontroller
         self.performSegue(withIdentifier: "pipeline", sender: self)
     }
     
     //Function to send recording information to TableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let secondView = segue.destination as! SecondViewController
+        _ = segue.destination as! SecondViewController
         
         //Sending recording information to SecondViewController
-        secondView.addNewRecording(filePath: path, avg: avgDecibels, min: minDecibels, max: maxDecibels)
+        //secondView.addNewRecording(filePath: path, avg: avgDecibels, min: minDecibels, max: maxDecibels)
+        //print("NumItems:\(secondView.recordings.count)")
+
+    }
+    
+    //Function to save an instance of a recording to CoreData
+    func saveData(filePath: String, avg: Int, min: Int, max: Int){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+
+        let context = appDelegate.persistentContainer.viewContext
+        let entity = NSEntityDescription.entity(forEntityName: "Recording", in: context)
         
+        let newEntity = NSManagedObject(entity: entity!, insertInto: context)
         
+        newEntity.setValue(filePath,forKey: "filePath")
+        newEntity.setValue(avg, forKey: "avgDecibel")
+        newEntity.setValue(min, forKey: "minDecibel")
+        newEntity.setValue(max, forKey: "maxDecibel")
         
+        do{
+            try context.save()
+            print("Saved")
+        }catch{
+            print("failed")
+        }
     }
     
     //Function to get the minium decibel in the recording
@@ -227,7 +258,7 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         
         DispatchQueue.main.async {
             self.label.text = "\(self.decibels)dB"
-            print(self.getPercent())
+            //print(self.getPercent())
             self.shapeLayer.strokeEnd = CGFloat(self.getPercent())
         }
     }

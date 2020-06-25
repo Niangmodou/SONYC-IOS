@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5208A2A924A41EBE0002A522 /* RecordingModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5208A2A724A41EBE0002A522 /* RecordingModel.xcdatamodeld */; };
 		52DE5D8D24A1881C0097C63F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5D8C24A1881C0097C63F /* AppDelegate.swift */; };
 		52DE5D8F24A1881C0097C63F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5D8E24A1881C0097C63F /* SceneDelegate.swift */; };
 		52DE5D9124A1881C0097C63F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5D9024A1881C0097C63F /* FirstViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5208A2A824A41EBE0002A522 /* RecordingModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecordingModel.xcdatamodel; sourceTree = "<group>"; };
 		52DE5D8924A1881C0097C63F /* SONYC-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SONYC-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DE5D8C24A1881C0097C63F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52DE5D8E24A1881C0097C63F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				52DE5D9724A188200097C63F /* Assets.xcassets */,
 				52DE5D9924A188200097C63F /* LaunchScreen.storyboard */,
 				52DE5D9C24A188200097C63F /* Info.plist */,
+				5208A2A724A41EBE0002A522 /* RecordingModel.xcdatamodeld */,
 			);
 			path = "SONYC-Project";
 			sourceTree = "<group>";
@@ -145,6 +148,7 @@
 				52DE5D9124A1881C0097C63F /* FirstViewController.swift in Sources */,
 				52DE5D8D24A1881C0097C63F /* AppDelegate.swift in Sources */,
 				52DE5D8F24A1881C0097C63F /* SceneDelegate.swift in Sources */,
+				5208A2A924A41EBE0002A522 /* RecordingModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,6 +346,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5208A2A724A41EBE0002A522 /* RecordingModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5208A2A824A41EBE0002A522 /* RecordingModel.xcdatamodel */,
+			);
+			currentVersion = 5208A2A824A41EBE0002A522 /* RecordingModel.xcdatamodel */;
+			path = RecordingModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 52DE5D8124A1881B0097C63F /* Project object */;
 }
