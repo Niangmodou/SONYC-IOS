@@ -11,38 +11,27 @@ import AVFoundation
 import CoreData
 
 class SecondViewController: UIViewController, AVAudioRecorderDelegate{
-    
-    //Dictionary to store recordings information. {FilePath:[Avg,Min,Max]}
-    var recordings: [URL: [Int]] = [:]
-    
     //Outlet for table view
     @IBOutlet weak var myTableView: UITableView!
-    
-    //Variable to track number of current recordings
-    var numRecords : Int = 0
     
     //Variables for audio player
     var audioPlayer: AVAudioPlayer!
     
-    //Variable to store path for current audio file
-    var currPath: URL!
-    
+    //Variable to store retrieved data from CoreData
     var myData: [NSManagedObject] = []
-    
-    var filePath: URL!
-    var minDecibels: Int = 0
-    var maxDecibels: Int = 0
-    var avgDecibels: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //deleteAllData()
+        
+        //Loading stored recording data from CoreData
         getData()
         
+        //TableView setup
         myTableView.delegate = self
         myTableView.dataSource = self
     }
     
+    //Function to get current data from CoreData
     func getData(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             return
@@ -50,57 +39,14 @@ class SecondViewController: UIViewController, AVAudioRecorderDelegate{
         
         let context = appDelegate.persistentContainer.viewContext
         let fetch = NSFetchRequest<NSManagedObject>(entityName: "Recording")
-        //fetch.returnsObjectsAsFaults = false
         
         do{
-            //let results: [NSFetchRequest<NSManagedObject>] = try context.fetch
-            
+            //Loading data from CoreData
             myData = try context.fetch(fetch)
-            
-//            for data in results as! [NSManagedObject] {
-//                filePath = data.value(forKey: "filePath") as! URL
-//                avgDecibels = data.value(forKey: "avgDecibels") as! Int
-//                minDecibels = data.value(forKey: "minDecibels") as! Int
-//                maxDecibels = data.value(forKey: "maxDecibels") as! Int
-//
-//                print(myData)
-//            }
-        }catch{
-            print("Error :(")
-        }
-    }
-    
-    //Function to delete all instances of Recording in CoreData
-    func deleteAllData(){
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Recording")
-        fetchRequest.returnsObjectsAsFaults = false
 
-        do
-        {
-            let results = try managedContext.fetch(fetchRequest)
-            for managedObject in results
-            {
-                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
-                managedContext.delete(managedObjectData)
-            }
-        } catch {
-            //print("Detele all data in \(entity) error : \(error) \(error.userInfo)")
+        }catch let error{
+            print("Error: \(error) :(")
         }
-    }
-    
-    func addNewRecording(filePath: URL, avg: Int, min: Int, max: Int) {
-        //Creating array to store decibel readings for current recording
-        var decibelArray: [Int] = []
-        
-        decibelArray.append(avg)
-        decibelArray.append(min)
-        decibelArray.append(max)
-        
-        recordings[filePath] = decibelArray
-        
-        //print(recordings.count)
     }
 }
 
@@ -108,12 +54,15 @@ extension SecondViewController: UITableViewDelegate {
     //Listening to a tapped recording
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         do{
-            //Getting index of the tapped recording
-            let intIndex = indexPath.row
-            let index = recordings.index(recordings.startIndex, offsetBy: intIndex)
+            //Getting the contents of the selected row
+            let selectedRow = myData[indexPath.row]
+            
+            //Getting URL of selected audio
+            let stringUrl: String = selectedRow.value(forKey: "filePath") as! String
+            let currURL = URL(string: stringUrl)
             
             //Getting audio of specified index
-            audioPlayer = try AVAudioPlayer(contentsOf: recordings[index].key)
+            audioPlayer = try AVAudioPlayer(contentsOf: currURL!)
             audioPlayer.play()
         }catch{
             
@@ -123,19 +72,19 @@ extension SecondViewController: UITableViewDelegate {
 
 extension SecondViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return recordings.count
+        return myData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        //Getting the index of the current recording
-        let intIndex = indexPath.row
-        let index = recordings.index(recordings.startIndex, offsetBy: intIndex)
+        
+        //Getting the contents of the selected row
+        let selectedRow = myData[indexPath.row]
         
         //Assigning decibel readings to variables
-        let avgDecibel = recordings[index].value[0]
-        let minDecibel = recordings[index].value[1]
-        let maxDecibel = recordings[index].value[2]
+        let avgDecibel = selectedRow.value(forKey: "avgDecibel") as! Int
+        let minDecibel = selectedRow.value(forKey: "minDecibel") as! Int
+        let maxDecibel = selectedRow.value(forKey: "maxDecibel") as! Int
         
         //Assigning text label of cell to decibel readings
         cell.textLabel?.text = String("Avg: \(avgDecibel)dB| Min: \(minDecibel)dB| Max: \(maxDecibel)dB")

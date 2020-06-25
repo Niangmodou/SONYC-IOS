@@ -50,12 +50,19 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
     //Variable to update the sound meter every 0.1 seconds
     var timer: Timer?
     
+    //Varaible to get the id of the current recording
+    var prevID: Int = 0
+    
+    //Variable to store retrieved data from CoreData
+    var myData: [NSManagedObject] = []
+    
     //Button to start recording
     @IBOutlet weak var button: UIButton!
     
     override func viewDidLoad() {
           super.viewDidLoad()
-          
+          deleteAllData()
+          getData()
           createDecibelGauge()
           
           //Setting Up Audio Recording Session
@@ -66,11 +73,13 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
     @IBAction func record(_ sender: Any) {
         //Check for active recording
         if audioRecorder == nil {
-            let fileName = getPathDirectory().appendingPathComponent("test.m4a")
+            prevID = getCurrID()
+            
+            let fileName = getPathDirectory().appendingPathComponent("test\(minDecibels+maxDecibels+avgDecibels).m4a")
                 path = fileName.absoluteString
     
                 //Define settings for current recording
-                let settings = [
+            let settings = [
                     AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
                     AVSampleRateKey: 12000,
                     AVNumberOfChannelsKey: 1,
@@ -78,16 +87,16 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
                 ]
                 
                 //Start Audio recording
-                do {
-                    audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
-                    audioRecorder.delegate = self
+            do {
+                audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
+                audioRecorder.delegate = self
                     
-                    startMonitoring()
+                startMonitoring()
                     
-                    button.setTitle("Stop Recording", for: .normal)
-                    button.setTitleColor(UIColor.red, for: .normal)
-                }catch {
-                    displayAlert(title: "Error", message: "Recording Failed")
+                button.setTitle("Stop Recording", for: .normal)
+                button.setTitleColor(UIColor.red, for: .normal)
+            }catch {
+                displayAlert(title: "Error", message: "Recording Failed")
                 }
             }else{
                 //Stop Recording
@@ -138,11 +147,25 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
     //Function to send recording information to TableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         _ = segue.destination as! SecondViewController
-        
-        //Sending recording information to SecondViewController
-        //secondView.addNewRecording(filePath: path, avg: avgDecibels, min: minDecibels, max: maxDecibels)
-        //print("NumItems:\(secondView.recordings.count)")
 
+    }
+    
+    //Function to get current data from CoreData
+    func getData(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        let fetch = NSFetchRequest<NSManagedObject>(entityName: "Recording")
+        
+        do{
+            //Loading data from CoreData
+            myData = try context.fetch(fetch)
+
+        }catch let error{
+            print("Error: \(error) :(")
+        }
     }
     
     //Function to save an instance of a recording to CoreData
@@ -161,6 +184,9 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         newEntity.setValue(min, forKey: "minDecibel")
         newEntity.setValue(max, forKey: "maxDecibel")
         
+        let currID: Int = getCurrID()
+        newEntity.setValue(currID, forKey: "id")
+        
         do{
             try context.save()
             print("Saved")
@@ -169,6 +195,36 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         }
     }
     
+    //Function to delete all instances of Recording in CoreData
+    func deleteAllData(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Recording")
+        fetchRequest.returnsObjectsAsFaults = false
+
+        do{
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObject in results{
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+            }
+        } catch let error {
+            print("Error: \(error) :(")
+        }
+    }
+    
+    //Function to get the current ID of the record
+    func getCurrID() -> Int{
+        if myData.count == 0 {
+            return 0
+            
+        }else{
+            //Get the previous recording's ID
+            let prevNum = myData[myData.count - 1].value(forKey: "id") as! Int
+            
+            return prevNum+1
+        }
+    }
     //Function to get the minium decibel in the recording
     func getMinDecibel() -> Int {
         var currMin: Int = Int.max
@@ -180,6 +236,7 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         
         return currMin
     }
+
     
     //Function to get the maximum decibel in the recording
     func getMaxDecibel() -> Int {
@@ -258,7 +315,7 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
         
         DispatchQueue.main.async {
             self.label.text = "\(self.decibels)dB"
-            //print(self.getPercent())
+            
             self.shapeLayer.strokeEnd = CGFloat(self.getPercent())
         }
     }
