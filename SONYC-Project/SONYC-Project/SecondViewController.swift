@@ -91,15 +91,35 @@ extension SecondViewController: UITableViewDataSource{
         
         return cell
     }
+    
+    //Remove a recording by swiping right
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            
+            let context = appDelegate.persistentContainer.viewContext
+            let commit = myData[indexPath.row]
+            myData.remove(at: indexPath.row)
+            context.delete(commit)
+            
+            do{
+                try context.save()
+                myTableView.deleteRows(at: [indexPath], with: .fade)
+            }catch{
+                print("Error Deleting")
+            }
+
+            myTableView.reloadData()
+        }
+    }
 }
 
 /*
  TO-DO____________
-1. fix overrite audio issue
-2. create a dictionary for audio data
-3. make sure audio is playing
+1. TableViews are not matching up
 4. tableview style
-5. succesful deletions
 6. decibel readings
 7. Make sure monitoring stops after 10 seconds
  */
