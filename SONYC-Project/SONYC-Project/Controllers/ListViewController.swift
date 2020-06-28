@@ -1,5 +1,5 @@
 //
-//  SecondViewController.swift
+//  ListViewController.swift
 //  SONYC-Project
 //
 //  Created by Modou Niang on 6/22/20.
@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import CoreData
 
-class SecondViewController: UIViewController, AVAudioRecorderDelegate{
+class ListViewController: UIViewController, AVAudioRecorderDelegate{
     //Outlet for table view
     @IBOutlet weak var myTableView: UITableView!
     
@@ -86,14 +86,15 @@ extension SecondViewController: UITableViewDataSource{
         let minDecibel = selectedRow.value(forKey: "minDecibel") as! Int
         let maxDecibel = selectedRow.value(forKey: "maxDecibel") as! Int
         
+        //print("hi")
         //Assigning text label of cell to decibel readings
+        cell.configure(recordNum: indexPath.row+1, avg: avgDecibel, min: minDecibel, max: maxDecibel)
         //cell.textLabel?.text = String("Avg: \(avgDecibel)dB| Min: \(minDecibel)dB| Max: \(maxDecibel)dB")
-        cell.configure(recordNum: indexPath.row+1, minDecibel: minDecibel, avgDecibel: avgDecibel, maxDecibel: maxDecibel)
         
         return cell
     }
     
-    //Remove a recording by swiping right
+    //Remove a recording from CoreData by swiping right
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {

@@ -255,6 +255,7 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
             sum += decibel
         }
         
+        //Maybe handle division by Zero error????
         let avg: Int = sum/decibelReadings.count
         
         return avg
