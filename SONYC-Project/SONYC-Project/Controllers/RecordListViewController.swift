@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import CoreData
 
-class SecondViewController: UIViewController, AVAudioRecorderDelegate{
+class RecordListViewController: UIViewController, AVAudioRecorderDelegate{
     //Outlet for table view
     @IBOutlet weak var myTableView: UITableView!
     
@@ -50,7 +50,7 @@ class SecondViewController: UIViewController, AVAudioRecorderDelegate{
     }
 }
 
-extension SecondViewController: UITableViewDelegate {
+extension RecordListViewController: UITableViewDelegate {
     //Listening to a tapped recording
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         do{
@@ -70,7 +70,7 @@ extension SecondViewController: UITableViewDelegate {
     }
 }
 
-extension SecondViewController: UITableViewDataSource{
+extension RecordListViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myData.count
     }

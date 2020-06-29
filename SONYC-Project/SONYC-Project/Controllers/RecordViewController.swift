@@ -13,7 +13,7 @@ import CoreAudioKit
 import AVKit
 import CoreData
 
-class FirstViewController: UIViewController, AVAudioRecorderDelegate{
+class RecordViewController: UIViewController, AVAudioRecorderDelegate{
     
     //Variable for Gauge ShapeLayer
     let shapeLayer = CAShapeLayer()
@@ -143,7 +143,7 @@ class FirstViewController: UIViewController, AVAudioRecorderDelegate{
     
     //Function to send recording information to TableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        _ = segue.destination as! SecondViewController
+        _ = segue.destination as! RecordListViewController
 
     }
     
