@@ -143,7 +143,11 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
     
     //Function to send recording information to TableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        _ = segue.destination as! RecordListViewController
+        if segue.destination is RecordViewController {
+            _ = segue.destination as! RecordListViewController
+        }else{
+            
+        }
 
     }
     
@@ -277,11 +281,44 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
         
         //Get Current decibels for sound
         let spl = audioRecorder.averagePower(forChannel: 0)
-        let decibels : Int = Int(abs(spl))//pow(10.0, spl/20.0) * 20//20 * log10(spl)
-    
+        let decibels : Int = Int(spl + 100)//pow(10.0, spl/20.0) * 20//20 * log10(spl)
+        print("Final:",convert(inputValue: decibels))
         return decibels
     }
-
+    
+    func convert(inputValue: Int) -> Float {
+        /*
+        var level : CGFloat!
+        let minDecibels: CGFloat = -80
+        let decibels = audioRecorder.averagePower(forChannel: 0)
+        if decibels < Float(minDecibels)
+        {
+            level = 0
+        }
+        else if decibels >= 0
+        {
+            level = 1
+        }
+        else
+        {
+            let root: Float = 2
+            let minAmp = powf(10, 0.05 * Float(minDecibels))
+            let inverseAmpRange: Float = 1 / (1 - minAmp)
+            let amp = powf(10, 0.05 * decibels)
+            let adjAmp: Float = (amp - minAmp) * inverseAmpRange
+            level = CGFloat(powf(adjAmp, 1/root))
+        }
+        level = level * 360 + 0
+        let degree: CGFloat = level/(360 - 0)
+        let radian: CGFloat = level*CGFloat(Double.pi)/180
+        print("Degree:",degree)
+        print("Radian:",radian)
+        return level
+        */
+        
+        //return fabsf([self scale:linear rangeMin:self.min rangeMax:self.max scaleMin:0.0f scaleMax:1.0f]);
+        return 1
+    }
     //Gets path to directory
     func getPathDirectory() -> URL {
         //Searches a FileManager for paths and returns the first one
@@ -338,6 +375,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
         let trackLayer = CAShapeLayer()
         let circularPath = UIBezierPath(arcCenter: .zero, radius: 100, startAngle: 0, endAngle: 2*CGFloat.pi, clockwise: true)
         
+        //Gauge White Layer
+        let whiteLayer = CAShapeLayer()
+        let whitePath = UIBezierPath(arcCenter: .zero, radius: 100, startAngle: CGFloat.pi/4, endAngle: 3*CGFloat.pi/4, clockwise: true)
+        
         //Gauge TrackLayer configurations
         trackLayer.path = circularPath.cgPath
         trackLayer.strokeColor = getColorByHex(rgbHexValue:0xE6F4F1).cgColor
@@ -358,6 +399,15 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
         view.layer.addSublayer(shapeLayer)
         
         shapeLayer.transform = CATransform3DMakeRotation(-5*CGFloat.pi/4, 0, 0, 1)
+        
+        whiteLayer.path = whitePath.cgPath
+        whiteLayer.strokeColor = UIColor.white.cgColor
+        whiteLayer.lineWidth = 15
+        whiteLayer.fillColor = UIColor.white.cgColor
+        whiteLayer.lineCap = CAShapeLayerLineCap.butt
+        whiteLayer.position = center
+        view.layer.addSublayer(whiteLayer)
+        
     }
 
 }
