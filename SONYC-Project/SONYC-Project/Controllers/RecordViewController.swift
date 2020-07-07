@@ -24,6 +24,14 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
     var maxDecibels: Int = 0
     var avgDecibels: Int = 0
     
+    //Labels for current decibel measurments
+    @IBOutlet weak var minLabel: UILabel!
+    @IBOutlet weak var avgLabel: UILabel!
+    @IBOutlet weak var maxLabel: UILabel!
+    
+    //Button to create a report
+    @IBOutlet weak var createReportBtn: UIButton!
+    
     //Array to store all decibel readings
     var decibelReadings: [Int] = []
     
@@ -57,13 +65,15 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
     @IBOutlet weak var button: UIButton!
     
     override func viewDidLoad() {
-          super.viewDidLoad()
-          deleteAllData()
-          getData()
-          createDecibelGauge()
+        super.viewDidLoad()
+        
+        styleButton()
+        deleteAllData()
+        getData()
+        createDecibelGauge()
           
-          //Setting Up Audio Recording Session
-          recordingSession = AVAudioSession.sharedInstance()
+        //Setting Up Audio Recording Session
+        recordingSession = AVAudioSession.sharedInstance()
       }
     
     //Function to record user's mictrophone
@@ -102,6 +112,13 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
                 button.setTitle("Record Sound", for: .normal)
                 button.setTitleColor(UIColor.blue, for: .normal)
         }
+    }
+    
+    
+    func styleButton(){
+        createReportBtn.backgroundColor = getColorByHex(rgbHexValue:0x32659F)
+        createReportBtn.layer.cornerRadius = 25.0
+        createReportBtn.tintColor = UIColor.white
     }
     
     //Function to start voice and decibel monitoring
@@ -145,12 +162,14 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is RecordViewController {
             _ = segue.destination as! RecordListViewController
-        }else{
-            
         }
-
     }
     
+    //Function to create a report once recording is complete
+    @IBAction func createReport(_ sender: Any) {
+        
+    }
+
     //Function to get current data from CoreData
     func getData(){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -350,6 +369,13 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
         
         DispatchQueue.main.async {
             self.label.text = "\(self.decibels)dB"
+            self.minLabel.text = "\(self.getMinDecibel())dB"
+            self.avgLabel.text = "\(self.getAvgDecibel())dB"
+            self.maxLabel.text = "\(self.getMaxDecibel())dB"
+            
+            self.minLabel.sizeToFit()
+            self.avgLabel.sizeToFit()
+            self.maxLabel.sizeToFit()
             
             self.shapeLayer.strokeEnd = CGFloat(self.getPercent())
         }
@@ -388,6 +414,15 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
         trackLayer.position = center
         view.layer.addSublayer(trackLayer)
         
+        //White layer
+        whiteLayer.path = whitePath.cgPath
+        whiteLayer.strokeColor = UIColor.white.cgColor
+        whiteLayer.lineWidth = 15
+        whiteLayer.fillColor = UIColor.white.cgColor
+        whiteLayer.lineCap = CAShapeLayerLineCap.butt
+        whiteLayer.position = center
+        view.layer.addSublayer(whiteLayer)
+        
         //Gauge ShapeLayer configurations
         shapeLayer.path = circularPath.cgPath
         shapeLayer.strokeColor = getColorByHex(rgbHexValue:0x32659F).cgColor
@@ -400,13 +435,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
         
         shapeLayer.transform = CATransform3DMakeRotation(-5*CGFloat.pi/4, 0, 0, 1)
         
-        whiteLayer.path = whitePath.cgPath
-        whiteLayer.strokeColor = UIColor.white.cgColor
-        whiteLayer.lineWidth = 15
-        whiteLayer.fillColor = UIColor.white.cgColor
-        whiteLayer.lineCap = CAShapeLayerLineCap.butt
-        whiteLayer.position = center
-        view.layer.addSublayer(whiteLayer)
         
     }
 

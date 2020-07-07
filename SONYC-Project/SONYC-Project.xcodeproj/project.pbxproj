@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		5208A2A924A41EBE0002A522 /* RecordingModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5208A2A724A41EBE0002A522 /* RecordingModel.xcdatamodeld */; };
 		520AA5A924A94A68003D5012 /* CardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520AA5A824A94A68003D5012 /* CardCell.swift */; };
+		520E611324AE5A38009A8304 /* SensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E611224AE5A38009A8304 /* SensorViewController.swift */; };
+		520E611624AE671D009A8304 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 520E611524AE671C009A8304 /* logo.png */; };
+		520E611824AE6725009A8304 /* Hamburger.png in Resources */ = {isa = PBXBuildFile; fileRef = 520E611724AE6725009A8304 /* Hamburger.png */; };
 		528C6E5624A96F3100D7D6F1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528C6E5524A96F3100D7D6F1 /* MapViewController.swift */; };
 		52DE5D8D24A1881C0097C63F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5D8C24A1881C0097C63F /* AppDelegate.swift */; };
 		52DE5D8F24A1881C0097C63F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5D8E24A1881C0097C63F /* SceneDelegate.swift */; };
@@ -22,6 +25,9 @@
 /* Begin PBXFileReference section */
 		5208A2A824A41EBE0002A522 /* RecordingModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecordingModel.xcdatamodel; sourceTree = "<group>"; };
 		520AA5A824A94A68003D5012 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
+		520E611224AE5A38009A8304 /* SensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorViewController.swift; sourceTree = "<group>"; };
+		520E611524AE671C009A8304 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		520E611724AE6725009A8304 /* Hamburger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hamburger.png; sourceTree = "<group>"; };
 		528C6E5524A96F3100D7D6F1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52DE5D8924A1881C0097C63F /* SONYC-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SONYC-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DE5D8C24A1881C0097C63F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +57,7 @@
 				52DE5D9024A1881C0097C63F /* RecordViewController.swift */,
 				52DE5D9224A1881C0097C63F /* RecordListViewController.swift */,
 				528C6E5524A96F3100D7D6F1 /* MapViewController.swift */,
+				520E611224AE5A38009A8304 /* SensorViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -84,6 +91,15 @@
 			path = "Support FIles";
 			sourceTree = "<group>";
 		};
+		520E611424AE5A6E009A8304 /* Images and Logos */ = {
+			isa = PBXGroup;
+			children = (
+				520E611524AE671C009A8304 /* logo.png */,
+				520E611724AE6725009A8304 /* Hamburger.png */,
+			);
+			path = "Images and Logos";
+			sourceTree = "<group>";
+		};
 		52DE5D8024A1881B0097C63F = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +119,7 @@
 		52DE5D8B24A1881C0097C63F /* SONYC-Project */ = {
 			isa = PBXGroup;
 			children = (
+				520E611424AE5A6E009A8304 /* Images and Logos */,
 				520AA5B224A96176003D5012 /* Controllers */,
 				520AA5B824A96340003D5012 /* Support FIles */,
 				520AA5B724A9632F003D5012 /* Views */,
@@ -169,8 +186,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				520E611624AE671D009A8304 /* logo.png in Resources */,
 				52DE5D9B24A188200097C63F /* LaunchScreen.storyboard in Resources */,
 				52DE5D9824A188200097C63F /* Assets.xcassets in Resources */,
+				520E611824AE6725009A8304 /* Hamburger.png in Resources */,
 				52DE5D9624A1881C0097C63F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,6 +207,7 @@
 				52DE5D8F24A1881C0097C63F /* SceneDelegate.swift in Sources */,
 				5208A2A924A41EBE0002A522 /* RecordingModel.xcdatamodeld in Sources */,
 				520AA5A924A94A68003D5012 /* CardCell.swift in Sources */,
+				520E611324AE5A38009A8304 /* SensorViewController.swift in Sources */,
 				528C6E5624A96F3100D7D6F1 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
