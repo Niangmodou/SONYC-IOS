@@ -48,7 +48,6 @@ class RecordDescriptionViewController: UIViewController {
         populateArrays()
         styleButtons(iconNames: iconNames, buttonNames: buttonNames)
         
-        // Do any additional setup after loading the view.
     }
     
     //Function to populate the iconNames array, buttonNames array, and the IBOutlet arrays
@@ -90,8 +89,6 @@ class RecordDescriptionViewController: UIViewController {
         actionOthersButton.layer.borderColor = UIColor.black.cgColor
         actionOthersButton.layer.cornerRadius = 5
         actionOthersButton.layer.borderWidth = 1
-        //actionOthersButton.sizeToFit()
-        //actionOthersButton.sizeToFit()
         
         //Styling Smiley Faces
         var xStart = 30
@@ -126,16 +123,6 @@ class RecordDescriptionViewController: UIViewController {
 
         return UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(alpha))
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
 

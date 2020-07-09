@@ -41,9 +41,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         getData()
         //configureSearchBar()
         mapView.delegate = self
-        //searchBar.delegate = self
-        
-        /*
+    
+        let location = CLLocationCoordinate2D(latitude: 40.7127, longitude: -74.0059)
+        centerMapOnLocation(location, mapView: mapView)
+    }
+    
+    //Function to center map on New York City
+    func centerMapOnLocation(_ location: CLLocationCoordinate2D, mapView: MKMapView) {
+        let regionRadius: CLLocationDistance = 5000
+        let coordinateRegion = MKCoordinateRegion(center: location,
+                                                  latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }
+    
+    //Function to get and display the user's current location
+    func getUserCurrentLocation(){
         //Setting up Location Manager to get current location
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -53,22 +65,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         
         //Getting MapView to display current location
         mapView.showsUserLocation = true
-         */
-        let location = CLLocationCoordinate2D(latitude: 40.7127, longitude: -74.0059)
-        centerMapOnLocation(location, mapView: mapView)
-        
-        /*
-        let london = MKPointAnnotation()
-        london.title = "London"
-        london.coordinate = CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275)
-        mapView.addAnnotation(london)
- */
-    }
-    func centerMapOnLocation(_ location: CLLocationCoordinate2D, mapView: MKMapView) {
-        let regionRadius: CLLocationDistance = 5000
-        let coordinateRegion = MKCoordinateRegion(center: location,
-                                                  latitudinalMeters: regionRadius * 2.0, longitudinalMeters: regionRadius * 2.0)
-        mapView.setRegion(coordinateRegion, animated: true)
     }
     
 //    Function to configure search bar
@@ -90,7 +86,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
             //Retrieving the json data from the data response returned from the server
             do{
                 self.jsonResponse = try JSONSerialization.jsonObject(with: dataResponse, options: [])
-                self.populateMap(jsonResponse: self.jsonResponse)
+                self.populateMap(jsonResponse: self.jsonResponse as Any)
             }catch let parsingError{
                 print("Error:",parsingError)
             }
@@ -100,28 +96,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     
     //Function to plot the noise complaint locations received from the 311 API
     func populateMap(jsonResponse: Any){
-        print(2)
         for item in jsonResponse as! [Dictionary<String, AnyObject>] {
             if let lon = (item["longitude"] as? NSString)?.doubleValue {
                 if let lat = (item["latitude"] as? NSString)?.doubleValue {
                    let location = MKPointAnnotation()
-                   //location.title = "London"
                    location.coordinate = CLLocationCoordinate2D(latitude: lat , longitude: lon)
                    mapView.addAnnotation(location)
                 }else{
                     print("error")
                 }
             }
-            /*
-            let lon = item["longitude"]?.doubleValue
-            let lat = item["latitude"]?.doubleValue
-            print(Double(lat),Double(lon))
- */
-            let location = MKPointAnnotation()
-            //location.title = "London"
-            //location.coordinate = CLLocationCoordinate2D(latitude: lat ?? , longitude: lon)
-            //mapView.addAnnotation(location)
- 
         }
     }
     
@@ -144,12 +128,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
             button.imageView?.contentMode = .scaleAspectFit
             button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -20, bottom: 0, right: 0)
             button.tintColor = UIColor.black
-            //button.backgroundColor = UIColor.white
             button.layer.borderColor = UIColor.white.cgColor
             button.layer.cornerRadius = 13
             button.layer.borderWidth = 1
         }
     }
+    
     /*
     //Functions to style MapKit
     private func configureOverlay(){

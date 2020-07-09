@@ -61,9 +61,6 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
     //Variable to store retrieved data from CoreData
     var myData: [NSManagedObject] = []
     
-    //Button to start recording
-    //@IBOutlet weak var button: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -144,10 +141,10 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
         saveData(filePath: path, avg: avgDecibels, min: minDecibels, max: maxDecibels)
         
         //Performing Segue to send data to second viewcontroller
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        //let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         //Getting and presenting map view controller
-        let nextViewController = storyboard.instantiateViewController(withIdentifier: "recordList")
+        //let nextViewController = storyboard.instantiateViewController(withIdentifier: "recordList")
         //self.present(nextViewController, animated: true, completion: nil)
     }
     
@@ -298,12 +295,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
             sum += decibel
         }
         
-        //Maybe handle division by Zero error????
-        do{
-            avg = sum/decibelReadings.count
-        }catch let error{
-            return 0
-        }
+        avg = sum/decibelReadings.count
         
         return avg
     }
