@@ -12,7 +12,25 @@
 		520E611324AE5A38009A8304 /* SensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 520E611224AE5A38009A8304 /* SensorViewController.swift */; };
 		520E611624AE671D009A8304 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 520E611524AE671C009A8304 /* logo.png */; };
 		520E611824AE6725009A8304 /* Hamburger.png in Resources */ = {isa = PBXBuildFile; fileRef = 520E611724AE6725009A8304 /* Hamburger.png */; };
+		522306C224B6C0A6003D54E1 /* Icon_Outdoor.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306B924B6C0A2003D54E1 /* Icon_Outdoor.png */; };
+		522306C324B6C0A6003D54E1 /* Icon_Indoor.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306BA24B6C0A2003D54E1 /* Icon_Indoor.png */; };
+		522306C424B6C0A6003D54E1 /* Icon_Happy Face.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306BB24B6C0A3003D54E1 /* Icon_Happy Face.png */; };
+		522306C524B6C0A6003D54E1 /* Icon_Dizzy Face.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306BC24B6C0A3003D54E1 /* Icon_Dizzy Face.png */; };
+		522306C624B6C0A6003D54E1 /* Icon_Resting man.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306BD24B6C0A3003D54E1 /* Icon_Resting man.png */; };
+		522306C724B6C0A6003D54E1 /* Icon_Annoyed Face.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306BE24B6C0A4003D54E1 /* Icon_Annoyed Face.png */; };
+		522306C824B6C0A6003D54E1 /* Icon_Parenting.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306BF24B6C0A4003D54E1 /* Icon_Parenting.png */; };
+		522306C924B6C0A6003D54E1 /* Icon_Working man.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306C024B6C0A5003D54E1 /* Icon_Working man.png */; };
+		522306CA24B6C0A6003D54E1 /* Icon_meh face.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306C124B6C0A5003D54E1 /* Icon_meh face.png */; };
+		522306CF24B6C155003D54E1 /* Icon_Sleeping man.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306CB24B6C154003D54E1 /* Icon_Sleeping man.png */; };
+		522306D024B6C155003D54E1 /* Icon_Angry Face.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306CC24B6C154003D54E1 /* Icon_Angry Face.png */; };
+		522306D124B6C155003D54E1 /* Frustrated face.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306CD24B6C154003D54E1 /* Frustrated face.png */; };
+		522306D224B6C155003D54E1 /* Icon_Walking.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306CE24B6C154003D54E1 /* Icon_Walking.png */; };
 		528C6E5624A96F3100D7D6F1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528C6E5524A96F3100D7D6F1 /* MapViewController.swift */; };
+		52B2F60E24B5732100535440 /* RecordDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2F60D24B5732100535440 /* RecordDescriptionViewController.swift */; };
+		52CA6EE224B75976003FB9F6 /* Logo_Dot_not color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CA6EDE24B75975003FB9F6 /* Logo_Dot_not color.png */; };
+		52CA6EE324B75976003FB9F6 /* Pin_History_non-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CA6EDF24B75975003FB9F6 /* Pin_History_non-color.png */; };
+		52CA6EE524B75976003FB9F6 /* Logo_311_non color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CA6EE124B75975003FB9F6 /* Logo_311_non color.png */; };
+		52CA6EE724B76572003FB9F6 /* Logo_Dob_non color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CA6EE624B76572003FB9F6 /* Logo_Dob_non color.png */; };
 		52DE5D8D24A1881C0097C63F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5D8C24A1881C0097C63F /* AppDelegate.swift */; };
 		52DE5D8F24A1881C0097C63F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5D8E24A1881C0097C63F /* SceneDelegate.swift */; };
 		52DE5D9124A1881C0097C63F /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5D9024A1881C0097C63F /* RecordViewController.swift */; };
@@ -28,7 +46,25 @@
 		520E611224AE5A38009A8304 /* SensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorViewController.swift; sourceTree = "<group>"; };
 		520E611524AE671C009A8304 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		520E611724AE6725009A8304 /* Hamburger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Hamburger.png; sourceTree = "<group>"; };
+		522306B924B6C0A2003D54E1 /* Icon_Outdoor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Outdoor.png; sourceTree = "<group>"; };
+		522306BA24B6C0A2003D54E1 /* Icon_Indoor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Indoor.png; sourceTree = "<group>"; };
+		522306BB24B6C0A3003D54E1 /* Icon_Happy Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Happy Face.png"; sourceTree = "<group>"; };
+		522306BC24B6C0A3003D54E1 /* Icon_Dizzy Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Dizzy Face.png"; sourceTree = "<group>"; };
+		522306BD24B6C0A3003D54E1 /* Icon_Resting man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Resting man.png"; sourceTree = "<group>"; };
+		522306BE24B6C0A4003D54E1 /* Icon_Annoyed Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Annoyed Face.png"; sourceTree = "<group>"; };
+		522306BF24B6C0A4003D54E1 /* Icon_Parenting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Parenting.png; sourceTree = "<group>"; };
+		522306C024B6C0A5003D54E1 /* Icon_Working man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Working man.png"; sourceTree = "<group>"; };
+		522306C124B6C0A5003D54E1 /* Icon_meh face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_meh face.png"; sourceTree = "<group>"; };
+		522306CB24B6C154003D54E1 /* Icon_Sleeping man.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Sleeping man.png"; sourceTree = "<group>"; };
+		522306CC24B6C154003D54E1 /* Icon_Angry Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Angry Face.png"; sourceTree = "<group>"; };
+		522306CD24B6C154003D54E1 /* Frustrated face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Frustrated face.png"; sourceTree = "<group>"; };
+		522306CE24B6C154003D54E1 /* Icon_Walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Walking.png; sourceTree = "<group>"; };
 		528C6E5524A96F3100D7D6F1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		52B2F60D24B5732100535440 /* RecordDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDescriptionViewController.swift; sourceTree = "<group>"; };
+		52CA6EDE24B75975003FB9F6 /* Logo_Dot_not color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo_Dot_not color.png"; sourceTree = "<group>"; };
+		52CA6EDF24B75975003FB9F6 /* Pin_History_non-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pin_History_non-color.png"; sourceTree = "<group>"; };
+		52CA6EE124B75975003FB9F6 /* Logo_311_non color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo_311_non color.png"; sourceTree = "<group>"; };
+		52CA6EE624B76572003FB9F6 /* Logo_Dob_non color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_Dob_non color.png"; path = "../../../../../Downloads/Logo_Dob_non color.png"; sourceTree = "<group>"; };
 		52DE5D8924A1881C0097C63F /* SONYC-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SONYC-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DE5D8C24A1881C0097C63F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52DE5D8E24A1881C0097C63F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -58,6 +94,7 @@
 				52DE5D9224A1881C0097C63F /* RecordListViewController.swift */,
 				528C6E5524A96F3100D7D6F1 /* MapViewController.swift */,
 				520E611224AE5A38009A8304 /* SensorViewController.swift */,
+				52B2F60D24B5732100535440 /* RecordDescriptionViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -96,6 +133,23 @@
 			children = (
 				520E611524AE671C009A8304 /* logo.png */,
 				520E611724AE6725009A8304 /* Hamburger.png */,
+				522306BE24B6C0A4003D54E1 /* Icon_Annoyed Face.png */,
+				522306BC24B6C0A3003D54E1 /* Icon_Dizzy Face.png */,
+				522306BB24B6C0A3003D54E1 /* Icon_Happy Face.png */,
+				522306BA24B6C0A2003D54E1 /* Icon_Indoor.png */,
+				522306C124B6C0A5003D54E1 /* Icon_meh face.png */,
+				522306B924B6C0A2003D54E1 /* Icon_Outdoor.png */,
+				522306BF24B6C0A4003D54E1 /* Icon_Parenting.png */,
+				522306BD24B6C0A3003D54E1 /* Icon_Resting man.png */,
+				522306C024B6C0A5003D54E1 /* Icon_Working man.png */,
+				522306CD24B6C154003D54E1 /* Frustrated face.png */,
+				522306CC24B6C154003D54E1 /* Icon_Angry Face.png */,
+				522306CB24B6C154003D54E1 /* Icon_Sleeping man.png */,
+				522306CE24B6C154003D54E1 /* Icon_Walking.png */,
+				52CA6EE124B75975003FB9F6 /* Logo_311_non color.png */,
+				52CA6EDE24B75975003FB9F6 /* Logo_Dot_not color.png */,
+				52CA6EE624B76572003FB9F6 /* Logo_Dob_non color.png */,
+				52CA6EDF24B75975003FB9F6 /* Pin_History_non-color.png */,
 			);
 			path = "Images and Logos";
 			sourceTree = "<group>";
@@ -186,11 +240,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				522306D224B6C155003D54E1 /* Icon_Walking.png in Resources */,
+				52CA6EE224B75976003FB9F6 /* Logo_Dot_not color.png in Resources */,
 				520E611624AE671D009A8304 /* logo.png in Resources */,
+				52CA6EE524B75976003FB9F6 /* Logo_311_non color.png in Resources */,
+				522306C324B6C0A6003D54E1 /* Icon_Indoor.png in Resources */,
+				522306C224B6C0A6003D54E1 /* Icon_Outdoor.png in Resources */,
 				52DE5D9B24A188200097C63F /* LaunchScreen.storyboard in Resources */,
+				522306C524B6C0A6003D54E1 /* Icon_Dizzy Face.png in Resources */,
+				522306C824B6C0A6003D54E1 /* Icon_Parenting.png in Resources */,
 				52DE5D9824A188200097C63F /* Assets.xcassets in Resources */,
 				520E611824AE6725009A8304 /* Hamburger.png in Resources */,
+				522306C624B6C0A6003D54E1 /* Icon_Resting man.png in Resources */,
+				522306CF24B6C155003D54E1 /* Icon_Sleeping man.png in Resources */,
 				52DE5D9624A1881C0097C63F /* Main.storyboard in Resources */,
+				522306C424B6C0A6003D54E1 /* Icon_Happy Face.png in Resources */,
+				52CA6EE324B75976003FB9F6 /* Pin_History_non-color.png in Resources */,
+				522306D124B6C155003D54E1 /* Frustrated face.png in Resources */,
+				522306C724B6C0A6003D54E1 /* Icon_Annoyed Face.png in Resources */,
+				522306C924B6C0A6003D54E1 /* Icon_Working man.png in Resources */,
+				522306D024B6C155003D54E1 /* Icon_Angry Face.png in Resources */,
+				522306CA24B6C0A6003D54E1 /* Icon_meh face.png in Resources */,
+				52CA6EE724B76572003FB9F6 /* Logo_Dob_non color.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -205,6 +276,7 @@
 				52DE5D9124A1881C0097C63F /* RecordViewController.swift in Sources */,
 				52DE5D8D24A1881C0097C63F /* AppDelegate.swift in Sources */,
 				52DE5D8F24A1881C0097C63F /* SceneDelegate.swift in Sources */,
+				52B2F60E24B5732100535440 /* RecordDescriptionViewController.swift in Sources */,
 				5208A2A924A41EBE0002A522 /* RecordingModel.xcdatamodeld in Sources */,
 				520AA5A924A94A68003D5012 /* CardCell.swift in Sources */,
 				520E611324AE5A38009A8304 /* SensorViewController.swift in Sources */,

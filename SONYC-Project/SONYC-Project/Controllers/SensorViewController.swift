@@ -45,8 +45,16 @@ class SensorViewController: UIViewController {
         let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         
         //Getting and presenting recording view controller
-        let nextViewController = storyboard.instantiateViewController(withIdentifier: "record")
-        self.present(nextViewController, animated: true, completion: nil)
+        let nextViewController = storyboard.instantiateViewController(withIdentifier: "soundLevel")
+        nextViewController.modalPresentationStyle = .fullScreen
+        performSegue(withIdentifier: "recordingPipeline", sender: self)
+        //self.present(nextViewController, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! RecordViewController
+        
+        destination.startRecording()
     }
     
     //Function for hamburger button to naviage to map
@@ -58,3 +66,9 @@ class SensorViewController: UIViewController {
         self.present(nextViewController, animated: true, completion: nil)
     }
 }
+
+/*
+ TODO
+ - create segue to send recording data from sensor to recording
+ - Handle recordings in sensr
+ */

@@ -62,7 +62,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
     var myData: [NSManagedObject] = []
     
     //Button to start recording
-    @IBOutlet weak var button: UIButton!
+    //@IBOutlet weak var button: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,7 +77,7 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
       }
     
     //Function to record user's mictrophone
-    @IBAction func record(_ sender: Any) {
+    func startRecording(){
         //Check for active recording
         if audioRecorder == nil {
             prevID = getCurrID()
@@ -93,32 +93,21 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
                     AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
                 ]
                 
-                //Start Audio recording
+            //Start Audio recording
             do {
                 audioRecorder = try AVAudioRecorder(url: fileName, settings: settings)
                 audioRecorder.delegate = self
                     
                 startMonitoring()
-                    
-                button.setTitle("Stop Recording", for: .normal)
-                button.setTitleColor(UIColor.red, for: .normal)
+                
             }catch {
                 displayAlert(title: "Error", message: "Recording Failed")
                 }
             }else{
                 //Stop Recording
                 stopMonitoring()
-                
-                button.setTitle("Record Sound", for: .normal)
-                button.setTitleColor(UIColor.blue, for: .normal)
+            
         }
-    }
-    
-    
-    func styleButton(){
-        createReportBtn.backgroundColor = getColorByHex(rgbHexValue:0x32659F)
-        createReportBtn.layer.cornerRadius = 25.0
-        createReportBtn.tintColor = UIColor.white
     }
     
     //Function to start voice and decibel monitoring
@@ -126,28 +115,28 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
         audioRecorder.isMeteringEnabled = true
         audioRecorder.record(forDuration: 10)
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: {(timer) in
-            if self.audioRecorder != nil {
+            if self.audioRecorder != nil && self.audioRecorder.isRecording {
                 self.decibels = self.calculateSPL(audioRecorder: self.audioRecorder)
                 self.decibelReadings.append(self.decibels)
+            }else{
+                //self.stopMonitoring()
             }
         })
     }
     
     //Function to stop current audio recording
     func stopMonitoring() {
-        audioRecorder.stop()
-        audioRecorder = nil
+        print("hi")
+        if self.audioRecorder != nil{
+            audioRecorder.stop()
+            audioRecorder = nil
+        }
         
         //Resetting decibels alongside decibel gauge
         decibels = 0
         self.label.text = "\(decibels)dB"
         shapeLayer.strokeEnd = 0
-        
-        //Getting decibel readings for current session
-        avgDecibels = getAvgDecibel()
-        minDecibels = getMinDecibel()
-        maxDecibels = getMaxDecibel()
-        
+    
         //Clear Decibel Readings for session
         decibelReadings.removeAll()
         
@@ -155,13 +144,41 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
         saveData(filePath: path, avg: avgDecibels, min: minDecibels, max: maxDecibels)
         
         //Performing Segue to send data to second viewcontroller
-        self.performSegue(withIdentifier: "pipeline", sender: self)
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //Getting and presenting map view controller
+        let nextViewController = storyboard.instantiateViewController(withIdentifier: "recordList")
+        //self.present(nextViewController, animated: true, completion: nil)
+    }
+    
+    //Function to style and give functionality to the create noise report button
+    func styleButton(){
+        //Styling button
+        createReportBtn.backgroundColor = getColorByHex(rgbHexValue:0x32659F)
+        createReportBtn.layer.cornerRadius = 25.0
+        createReportBtn.tintColor = UIColor.white
+        
+        //Adding a target for when the button is clicked
+        createReportBtn.addTarget(self, action: #selector(self.presentRecordOptions(sender:)), for: .touchUpInside)
+    }
+    
+    //Function to create a noise report using slide up menu
+    @objc func presentRecordOptions(sender: UIButton){
+        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        //Getting and presenting the recording description options view controller
+        let nextViewController = storyboard.instantiateViewController(withIdentifier: "recordingDescription")
+        //nextViewController.modalPresentationStyle = .custom
+        
+        self.present(nextViewController, animated: true, completion: nil)
     }
     
     //Function to send recording information to TableView
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.destination is RecordViewController {
             _ = segue.destination as! RecordListViewController
+        }else if segue.destination is RecordDescriptionViewController{
+            
         }
     }
     
@@ -213,6 +230,8 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
         }catch{
             print("failed")
         }
+        
+        resetLabels()
     }
     
     //Function to delete all instances of Recording in CoreData
@@ -273,15 +292,38 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
     //Function to the average decibel in the recording
     func getAvgDecibel() -> Int {
         var sum: Int = 0
+        var avg: Int
         
         for decibel in decibelReadings {
             sum += decibel
         }
         
         //Maybe handle division by Zero error????
-        let avg: Int = sum/decibelReadings.count
+        do{
+            avg = sum/decibelReadings.count
+        }catch let error{
+            return 0
+        }
         
         return avg
+    }
+    
+    //Function to replace the label text after recording session
+    func resetLabels(){
+        //reset labels
+        minLabel.text = "0dB"
+        maxLabel.text = "0dB"
+        avgLabel.text = "0dB"
+        
+        //fitting the size of the text to the labels
+        minLabel.sizeToFit()
+        maxLabel.sizeToFit()
+        avgLabel.sizeToFit()
+        
+        //reset audio recording data
+        minDecibels = 0
+        maxDecibels = 0
+        avgDecibels = 0
     }
     
     //Function to update the audio recorder and text
@@ -300,43 +342,33 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
         
         //Get Current decibels for sound
         let spl = audioRecorder.averagePower(forChannel: 0)
-        let decibels : Int = Int(spl + 100)//pow(10.0, spl/20.0) * 20//20 * log10(spl)
-        print("Final:",convert(inputValue: decibels))
-        return decibels
+        let decibels : Int = Int(spl)//Int(spl + 100)//pow(10.0, spl/20.0) * 20//20 * log10(spl)
+        //decibels += 120
+        //decibels = decibels > 0 ? 0 : decibels
+        //print("Final:",convert(inputValue: decibels*130 + 20))
+        //return Int(spl)
+        return decibels+100
     }
     
-    func convert(inputValue: Int) -> Float {
-        /*
-        var level : CGFloat!
-        let minDecibels: CGFloat = -80
-        let decibels = audioRecorder.averagePower(forChannel: 0)
-        if decibels < Float(minDecibels)
-        {
-            level = 0
+    func convert(inputValue: Float) -> Float {
+        print("spl: ",inputValue)
+        let minDecibels: Float = -80
+        
+        if inputValue < minDecibels{
+            return 0
         }
-        else if decibels >= 0
-        {
-            level = 1
+        else if inputValue >= 10{
+            return 1
         }
-        else
-        {
-            let root: Float = 2
+        else{
             let minAmp = powf(10, 0.05 * Float(minDecibels))
             let inverseAmpRange: Float = 1 / (1 - minAmp)
-            let amp = powf(10, 0.05 * decibels)
+            let amp = powf(10, 0.05 * Float(inputValue))
             let adjAmp: Float = (amp - minAmp) * inverseAmpRange
-            level = CGFloat(powf(adjAmp, 1/root))
+            let final = powf(10, 0.05 * Float(inputValue))
+            print("final:",powf(adjAmp, (1.0/2.0)))
+            return (sqrtf(final)*120)
         }
-        level = level * 360 + 0
-        let degree: CGFloat = level/(360 - 0)
-        let radian: CGFloat = level*CGFloat(Double.pi)/180
-        print("Degree:",degree)
-        print("Radian:",radian)
-        return level
-        */
-        
-        //return fabsf([self scale:linear rangeMin:self.min rangeMax:self.max scaleMin:0.0f scaleMax:1.0f]);
-        return 1
     }
     //Gets path to directory
     func getPathDirectory() -> URL {
@@ -373,10 +405,18 @@ class RecordViewController: UIViewController, AVAudioRecorderDelegate{
             self.avgLabel.text = "\(self.getAvgDecibel())dB"
             self.maxLabel.text = "\(self.getMaxDecibel())dB"
             
+            //Fitting the labels to the size of the text
             self.minLabel.sizeToFit()
             self.avgLabel.sizeToFit()
             self.maxLabel.sizeToFit()
             
+            //Updating the current decibel readings
+            //Getting decibel readings for current session
+            self.minDecibels = self.getMinDecibel()
+            self.maxDecibels = self.getMaxDecibel()
+            self.avgDecibels = self.getAvgDecibel()
+            
+            //Changing the gauge
             self.shapeLayer.strokeEnd = CGFloat(self.getPercent())
         }
     }
