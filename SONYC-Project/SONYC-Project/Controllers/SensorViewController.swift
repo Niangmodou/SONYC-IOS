@@ -47,8 +47,9 @@ class SensorViewController: UIViewController {
         //Getting and presenting recording view controller
         let nextViewController = storyboard.instantiateViewController(withIdentifier: "soundLevel")
         nextViewController.modalPresentationStyle = .fullScreen
+        UIView.setAnimationsEnabled(false)
         performSegue(withIdentifier: "recordingPipeline", sender: self)
-        //self.present(nextViewController, animated: true, completion: nil)
+        UIView.setAnimationsEnabled(true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -63,12 +64,7 @@ class SensorViewController: UIViewController {
         
         //Getting and presenting map view controller
         let nextViewController = storyboard.instantiateViewController(withIdentifier: "map")
-        self.present(nextViewController, animated: true, completion: nil)
+        self.present(nextViewController, animated: false, completion: nil)
     }
 }
 
-/*
- TODO
- - create segue to send recording data from sensor to recording
- - Handle recordings in sensr
- */
