@@ -38,6 +38,8 @@
 		52DE5D9624A1881C0097C63F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5D9424A1881C0097C63F /* Main.storyboard */; };
 		52DE5D9824A188200097C63F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5D9724A188200097C63F /* Assets.xcassets */; };
 		52DE5D9B24A188200097C63F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5D9924A188200097C63F /* LaunchScreen.storyboard */; };
+		52E228B324C0BDCF008910E8 /* Pin_dob_non-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E228B124C0BDCE008910E8 /* Pin_dob_non-color.png */; };
+		52E228B424C0BDCF008910E8 /* Pin_311_non-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E228B224C0BDCF008910E8 /* Pin_311_non-color.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +76,8 @@
 		52DE5D9724A188200097C63F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52DE5D9A24A188200097C63F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52DE5D9C24A188200097C63F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		52E228B124C0BDCE008910E8 /* Pin_dob_non-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pin_dob_non-color.png"; path = "../../../../../Downloads/Pin_dob_non-color.png"; sourceTree = "<group>"; };
+		52E228B224C0BDCF008910E8 /* Pin_311_non-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pin_311_non-color.png"; path = "../../../../../Downloads/Pin_311_non-color.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +136,8 @@
 			isa = PBXGroup;
 			children = (
 				520E611524AE671C009A8304 /* logo.png */,
+				52E228B224C0BDCF008910E8 /* Pin_311_non-color.png */,
+				52E228B124C0BDCE008910E8 /* Pin_dob_non-color.png */,
 				520E611724AE6725009A8304 /* Hamburger.png */,
 				522306BE24B6C0A4003D54E1 /* Icon_Annoyed Face.png */,
 				522306BC24B6C0A3003D54E1 /* Icon_Dizzy Face.png */,
@@ -241,12 +247,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				522306D224B6C155003D54E1 /* Icon_Walking.png in Resources */,
+				52E228B424C0BDCF008910E8 /* Pin_311_non-color.png in Resources */,
 				52CA6EE224B75976003FB9F6 /* Logo_Dot_not color.png in Resources */,
 				520E611624AE671D009A8304 /* logo.png in Resources */,
 				52CA6EE524B75976003FB9F6 /* Logo_311_non color.png in Resources */,
 				522306C324B6C0A6003D54E1 /* Icon_Indoor.png in Resources */,
 				522306C224B6C0A6003D54E1 /* Icon_Outdoor.png in Resources */,
 				52DE5D9B24A188200097C63F /* LaunchScreen.storyboard in Resources */,
+				52E228B324C0BDCF008910E8 /* Pin_dob_non-color.png in Resources */,
 				522306C524B6C0A6003D54E1 /* Icon_Dizzy Face.png in Resources */,
 				522306C824B6C0A6003D54E1 /* Icon_Parenting.png in Resources */,
 				52DE5D9824A188200097C63F /* Assets.xcassets in Resources */,
