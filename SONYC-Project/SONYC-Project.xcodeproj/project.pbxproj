@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,6 +25,7 @@
 		522306D024B6C155003D54E1 /* Icon_Angry Face.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306CC24B6C154003D54E1 /* Icon_Angry Face.png */; };
 		522306D124B6C155003D54E1 /* Frustrated face.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306CD24B6C154003D54E1 /* Frustrated face.png */; };
 		522306D224B6C155003D54E1 /* Icon_Walking.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306CE24B6C154003D54E1 /* Icon_Walking.png */; };
+		5253D22D24D20AC1004E5B98 /* overlay.json in Resources */ = {isa = PBXBuildFile; fileRef = 5253D22C24D20ABF004E5B98 /* overlay.json */; };
 		528C6E5624A96F3100D7D6F1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528C6E5524A96F3100D7D6F1 /* MapViewController.swift */; };
 		52B2F60E24B5732100535440 /* RecordDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2F60D24B5732100535440 /* RecordDescriptionViewController.swift */; };
 		52CA6EE224B75976003FB9F6 /* Logo_Dot_not color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CA6EDE24B75975003FB9F6 /* Logo_Dot_not color.png */; };
@@ -40,9 +41,11 @@
 		52DE5D9B24A188200097C63F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5D9924A188200097C63F /* LaunchScreen.storyboard */; };
 		52E228B324C0BDCF008910E8 /* Pin_dob_non-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E228B124C0BDCE008910E8 /* Pin_dob_non-color.png */; };
 		52E228B424C0BDCF008910E8 /* Pin_311_non-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E228B224C0BDCF008910E8 /* Pin_311_non-color.png */; };
+		C1DA4EF2D2368696CF45FC4B /* Pods_SONYC_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E61CCD0FC8EE7E62BD062D /* Pods_SONYC_Project.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07E61CCD0FC8EE7E62BD062D /* Pods_SONYC_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SONYC_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5208A2A824A41EBE0002A522 /* RecordingModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RecordingModel.xcdatamodel; sourceTree = "<group>"; };
 		520AA5A824A94A68003D5012 /* CardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCell.swift; sourceTree = "<group>"; };
 		520E611224AE5A38009A8304 /* SensorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		522306CC24B6C154003D54E1 /* Icon_Angry Face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Angry Face.png"; sourceTree = "<group>"; };
 		522306CD24B6C154003D54E1 /* Frustrated face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Frustrated face.png"; sourceTree = "<group>"; };
 		522306CE24B6C154003D54E1 /* Icon_Walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Walking.png; sourceTree = "<group>"; };
+		5253D22C24D20ABF004E5B98 /* overlay.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = overlay.json; sourceTree = "<group>"; };
 		528C6E5524A96F3100D7D6F1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52B2F60D24B5732100535440 /* RecordDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDescriptionViewController.swift; sourceTree = "<group>"; };
 		52CA6EDE24B75975003FB9F6 /* Logo_Dot_not color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo_Dot_not color.png"; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 		52DE5D9C24A188200097C63F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52E228B124C0BDCE008910E8 /* Pin_dob_non-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pin_dob_non-color.png"; path = "../../../../../Downloads/Pin_dob_non-color.png"; sourceTree = "<group>"; };
 		52E228B224C0BDCF008910E8 /* Pin_311_non-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pin_311_non-color.png"; path = "../../../../../Downloads/Pin_311_non-color.png"; sourceTree = "<group>"; };
+		9288A55BE31AC03729419141 /* Pods-SONYC-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SONYC-Project.debug.xcconfig"; path = "Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project.debug.xcconfig"; sourceTree = "<group>"; };
+		CDAB56B5DF6C49874CE96AF4 /* Pods-SONYC-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SONYC-Project.release.xcconfig"; path = "Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,12 +91,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1DA4EF2D2368696CF45FC4B /* Pods_SONYC_Project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		50FEF2A3F8515A24ED99793E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9288A55BE31AC03729419141 /* Pods-SONYC-Project.debug.xcconfig */,
+				CDAB56B5DF6C49874CE96AF4 /* Pods-SONYC-Project.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		520AA5B224A96176003D5012 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				52DE5D8E24A1881C0097C63F /* SceneDelegate.swift */,
+				5253D22C24D20ABF004E5B98 /* overlay.json */,
 				52DE5D9424A1881C0097C63F /* Main.storyboard */,
 				52DE5D9924A188200097C63F /* LaunchScreen.storyboard */,
 				52DE5D9C24A188200097C63F /* Info.plist */,
@@ -165,6 +182,8 @@
 			children = (
 				52DE5D8B24A1881C0097C63F /* SONYC-Project */,
 				52DE5D8A24A1881C0097C63F /* Products */,
+				50FEF2A3F8515A24ED99793E /* Pods */,
+				DF38B96AA14E1CE75660EB6D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,6 +207,14 @@
 			path = "SONYC-Project";
 			sourceTree = "<group>";
 		};
+		DF38B96AA14E1CE75660EB6D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07E61CCD0FC8EE7E62BD062D /* Pods_SONYC_Project.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -195,9 +222,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 52DE5D9F24A188200097C63F /* Build configuration list for PBXNativeTarget "SONYC-Project" */;
 			buildPhases = (
+				930BB7A27BAF096177DFF717 /* [CP] Check Pods Manifest.lock */,
 				52DE5D8524A1881C0097C63F /* Sources */,
 				52DE5D8624A1881C0097C63F /* Frameworks */,
 				52DE5D8724A1881C0097C63F /* Resources */,
+				3702DFAE05476768C39224C0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -256,6 +285,7 @@
 				52DE5D9B24A188200097C63F /* LaunchScreen.storyboard in Resources */,
 				52E228B324C0BDCF008910E8 /* Pin_dob_non-color.png in Resources */,
 				522306C524B6C0A6003D54E1 /* Icon_Dizzy Face.png in Resources */,
+				5253D22D24D20AC1004E5B98 /* overlay.json in Resources */,
 				522306C824B6C0A6003D54E1 /* Icon_Parenting.png in Resources */,
 				52DE5D9824A188200097C63F /* Assets.xcassets in Resources */,
 				520E611824AE6725009A8304 /* Hamburger.png in Resources */,
@@ -274,6 +304,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3702DFAE05476768C39224C0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		930BB7A27BAF096177DFF717 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SONYC-Project-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		52DE5D8524A1881C0097C63F /* Sources */ = {
@@ -430,6 +502,7 @@
 		};
 		52DE5DA024A188200097C63F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9288A55BE31AC03729419141 /* Pods-SONYC-Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -448,6 +521,7 @@
 		};
 		52DE5DA124A188200097C63F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDAB56B5DF6C49874CE96AF4 /* Pods-SONYC-Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

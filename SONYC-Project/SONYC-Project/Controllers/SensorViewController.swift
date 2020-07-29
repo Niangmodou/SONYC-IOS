@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class SensorViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadData()
         
         addSensor()
         
@@ -65,6 +67,11 @@ class SensorViewController: UIViewController {
         //Getting and presenting map view controller
         let nextViewController = storyboard.instantiateViewController(withIdentifier: "map")
         self.present(nextViewController, animated: false, completion: nil)
+    }
+    
+    //Functions to fetch data from the APIS and save them to CoreData
+    func loadData(){
+        
     }
 }
 

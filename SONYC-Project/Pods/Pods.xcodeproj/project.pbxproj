@@ -1,0 +1,843 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		06A1E1BF6FE5BC8D831FDF07E5C406F1 /* Pods-SONYC-Project-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAAD99E17F5718D319EA5D69676753B /* Pods-SONYC-Project-dummy.m */; };
+		0741320F4029C077E6C87F24FBBE1921 /* CSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835293DE0A489EEE0296F50308011A75 /* CSV.swift */; };
+		154DA87F9CFE7544E755F5D133AD4E2E /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331A8DDEC3F6AD5D93E4FA77C6FDB6D2 /* Parser.swift */; };
+		18E8699E19BF79678DE08904FCB53F2B /* String+Lines.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC8AC365E475D4C242D730991158E96F /* String+Lines.swift */; };
+		247FAAE57CD280F33A723C6F21E39D73 /* MapKitGoogleStyler-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = CBFB22138C7CA005DE1C274617C3C6E1 /* MapKitGoogleStyler-dummy.m */; };
+		4569D12EE21687562A47065F91120B55 /* StylerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6937F654E70939B1B77B789F91AEB91B /* StylerType.swift */; };
+		4843041C61147136A8180D54595572CD /* Pods-SONYC-Project-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 4B8AA97823A3E71A071050B112353EF1 /* Pods-SONYC-Project-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		49FF6A72A953E3733DA318DB65238AB9 /* StyleElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBAEACE392612B2366E77468F39A5E67 /* StyleElement.swift */; };
+		4B4B817A22A48F9C7DF534A126760F13 /* MapKit+GoogleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF21FF252F070C0895DD1532B1552AE6 /* MapKit+GoogleStyle.swift */; };
+		5011E29CDE30A43CF2A7F781A30974FB /* FeatureType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61F1E6B3BFE576E093CDB9542FBA379D /* FeatureType.swift */; };
+		59BEC0846A2C65972752CEC948139714 /* ElementType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EBC3138F398D2390C48F0C85990F7F /* ElementType.swift */; };
+		5D7F9243C47FDAE33C85C4E38E3420F2 /* EnumeratedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1990E78F222F4FB7D1F1EB935A5815D6 /* EnumeratedView.swift */; };
+		837565F200CD03AD302FB1FEADDBD6DB /* ParsingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0749AB99DAB2ECA0816943C4A3EF6EBC /* ParsingState.swift */; };
+		86AA9FC981C6AD5D03CA1D4BFD51FD1D /* SwiftCSV-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E55EF9A05201936D4F9456C7E05B9556 /* SwiftCSV-dummy.m */; };
+		95327B562411077EE54A06ED84894A53 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E9D3510A2EC9FD2E9CF17229CB82BD /* Foundation.framework */; };
+		A86CFB0F97C95200549E59C87E18DD82 /* SwiftCSV-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0902A9342E38430A5AE03532C673CBAC /* SwiftCSV-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A9914A6BD06B94D19517C18FEC4D36FB /* MapStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053E7094F38325C18E3DC7C95100364 /* MapStyle.swift */; };
+		AC3A9BBBC696D7F15419180CBE24DE2A /* NamedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6E625666B754909B2E9A840D707665 /* NamedView.swift */; };
+		ADB711F9FDA7908F2B40BDF85BDF505A /* GoogleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B4FB80707DD9F7B7A9A4151C9F0C93 /* GoogleStyle.swift */; };
+		B31A8515386081B70C5A5ACC5150F203 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E9D3510A2EC9FD2E9CF17229CB82BD /* Foundation.framework */; };
+		CD3C35081A0BBCE913F6C8B62C976F85 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E9D3510A2EC9FD2E9CF17229CB82BD /* Foundation.framework */; };
+		E11A87451D8A3729886D5E1CAD97FA13 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B33C8AD0C1EB0C52C6E94041275C20DA /* MapKit.framework */; };
+		E4326632509DC119D9F20A4ADF1A5EDB /* Description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 870E7F0FC69514C64E19C91F4465426A /* Description.swift */; };
+		FFC7013EA1CF0C158E68FCE8123F9AB4 /* MapKitGoogleStyler-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A62283696B95190070B562E3342FF567 /* MapKitGoogleStyler-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		420B86AC6F4CEACE6613F57546E71FC0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A384F059A39EEEC92C37F789F58DF8B0;
+			remoteInfo = MapKitGoogleStyler;
+		};
+		E927D3218B244C0E1C5410C44296969E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7465E4C13FFC9CE6D359E31F65D6825;
+			remoteInfo = SwiftCSV;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0749AB99DAB2ECA0816943C4A3EF6EBC /* ParsingState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ParsingState.swift; path = SwiftCSV/ParsingState.swift; sourceTree = "<group>"; };
+		0902A9342E38430A5AE03532C673CBAC /* SwiftCSV-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftCSV-umbrella.h"; sourceTree = "<group>"; };
+		1990E78F222F4FB7D1F1EB935A5815D6 /* EnumeratedView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = EnumeratedView.swift; path = SwiftCSV/EnumeratedView.swift; sourceTree = "<group>"; };
+		248BBC8E9A8FC103C1BAF636D5311E4C /* MapKitGoogleStyler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MapKitGoogleStyler.debug.xcconfig; sourceTree = "<group>"; };
+		25B4FB80707DD9F7B7A9A4151C9F0C93 /* GoogleStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GoogleStyle.swift; path = MapKitGoogleStyler/Classes/GoogleStyle.swift; sourceTree = "<group>"; };
+		30E9D3510A2EC9FD2E9CF17229CB82BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		331A8DDEC3F6AD5D93E4FA77C6FDB6D2 /* Parser.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Parser.swift; path = SwiftCSV/Parser.swift; sourceTree = "<group>"; };
+		3533D1BA9A1EA21222F20DB7148E397E /* MapKitGoogleStyler-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MapKitGoogleStyler-prefix.pch"; sourceTree = "<group>"; };
+		39295F6A278A5648AC5164C12848DBAC /* SwiftCSV-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftCSV-prefix.pch"; sourceTree = "<group>"; };
+		4B8AA97823A3E71A071050B112353EF1 /* Pods-SONYC-Project-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-SONYC-Project-umbrella.h"; sourceTree = "<group>"; };
+		50CF8E095C6D4755F41A93A99B3E6BD1 /* Pods-SONYC-Project-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SONYC-Project-acknowledgements.plist"; sourceTree = "<group>"; };
+		5A6CBEAC7212DCE694AC28667C36D2D1 /* SwiftCSV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftCSV.framework; path = SwiftCSV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CD1E861FABADE339081E4547FBA8A89 /* Pods-SONYC-Project-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-SONYC-Project-Info.plist"; sourceTree = "<group>"; };
+		61F1E6B3BFE576E093CDB9542FBA379D /* FeatureType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FeatureType.swift; path = MapKitGoogleStyler/Classes/FeatureType.swift; sourceTree = "<group>"; };
+		641EE0B474B249A6ACD0087B96F454D2 /* Pods-SONYC-Project.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-SONYC-Project.modulemap"; sourceTree = "<group>"; };
+		6937F654E70939B1B77B789F91AEB91B /* StylerType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StylerType.swift; path = MapKitGoogleStyler/Classes/StylerType.swift; sourceTree = "<group>"; };
+		6BA4A10AA53845D3D14C8DF682B33253 /* Pods-SONYC-Project-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-SONYC-Project-acknowledgements.markdown"; sourceTree = "<group>"; };
+		7F32D58C9F4B45658615C2B03B33C42E /* Pods-SONYC-Project-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-SONYC-Project-frameworks.sh"; sourceTree = "<group>"; };
+		835293DE0A489EEE0296F50308011A75 /* CSV.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CSV.swift; path = SwiftCSV/CSV.swift; sourceTree = "<group>"; };
+		870E7F0FC69514C64E19C91F4465426A /* Description.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Description.swift; path = SwiftCSV/Description.swift; sourceTree = "<group>"; };
+		88870419EECDB03AC315ADAFE02B7DA9 /* Pods_SONYC_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_SONYC_Project.framework; path = "Pods-SONYC-Project.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9053E7094F38325C18E3DC7C95100364 /* MapStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MapStyle.swift; path = MapKitGoogleStyler/Classes/MapStyle.swift; sourceTree = "<group>"; };
+		90EBC3138F398D2390C48F0C85990F7F /* ElementType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ElementType.swift; path = MapKitGoogleStyler/Classes/ElementType.swift; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A46871EB392B457C972D34B502285564 /* SwiftCSV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftCSV.release.xcconfig; sourceTree = "<group>"; };
+		A62283696B95190070B562E3342FF567 /* MapKitGoogleStyler-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MapKitGoogleStyler-umbrella.h"; sourceTree = "<group>"; };
+		AF02BCD364CC464F5598541ABEBBB897 /* MapKitGoogleStyler.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MapKitGoogleStyler.framework; path = MapKitGoogleStyler.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B1B9DF84237D9C18595A1AA104B61B5F /* Pods-SONYC-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SONYC-Project.debug.xcconfig"; sourceTree = "<group>"; };
+		B29A4898779333A5DE630A63AD24C195 /* Pods-SONYC-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-SONYC-Project.release.xcconfig"; sourceTree = "<group>"; };
+		B301674B89EEC1F8FCB33F867B033F11 /* MapKitGoogleStyler-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MapKitGoogleStyler-Info.plist"; sourceTree = "<group>"; };
+		B33C8AD0C1EB0C52C6E94041275C20DA /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/MapKit.framework; sourceTree = DEVELOPER_DIR; };
+		C294DEEF50E1FCECBE4838CE0780AD25 /* SwiftCSV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftCSV.debug.xcconfig; sourceTree = "<group>"; };
+		CBFB22138C7CA005DE1C274617C3C6E1 /* MapKitGoogleStyler-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MapKitGoogleStyler-dummy.m"; sourceTree = "<group>"; };
+		D8949F1ABE193F859825C582E8784C34 /* SwiftCSV-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftCSV-Info.plist"; sourceTree = "<group>"; };
+		DC6E625666B754909B2E9A840D707665 /* NamedView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = NamedView.swift; path = SwiftCSV/NamedView.swift; sourceTree = "<group>"; };
+		E55EF9A05201936D4F9456C7E05B9556 /* SwiftCSV-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftCSV-dummy.m"; sourceTree = "<group>"; };
+		EA742DFAE16CF8175119965DA3F439F1 /* SwiftCSV.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftCSV.modulemap; sourceTree = "<group>"; };
+		EBAEACE392612B2366E77468F39A5E67 /* StyleElement.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StyleElement.swift; path = MapKitGoogleStyler/Classes/StyleElement.swift; sourceTree = "<group>"; };
+		EEAAD99E17F5718D319EA5D69676753B /* Pods-SONYC-Project-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-SONYC-Project-dummy.m"; sourceTree = "<group>"; };
+		EF21FF252F070C0895DD1532B1552AE6 /* MapKit+GoogleStyle.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "MapKit+GoogleStyle.swift"; path = "MapKitGoogleStyler/Classes/MapKit+GoogleStyle.swift"; sourceTree = "<group>"; };
+		EF638CBAEB57DC4E1725BB1AB94707C2 /* MapKitGoogleStyler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MapKitGoogleStyler.release.xcconfig; sourceTree = "<group>"; };
+		F82C41A953E182971ED70E0B9D38A03D /* MapKitGoogleStyler.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MapKitGoogleStyler.modulemap; sourceTree = "<group>"; };
+		FC8AC365E475D4C242D730991158E96F /* String+Lines.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "String+Lines.swift"; path = "SwiftCSV/String+Lines.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		53F8F95FC03C0DBEEEA888BF407724FC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95327B562411077EE54A06ED84894A53 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95C2121F23D1529DA9152E5CA1DC2B3A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B31A8515386081B70C5A5ACC5150F203 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E30F5B2544F8A940603A0AC5CF9CB41D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CD3C35081A0BBCE913F6C8B62C976F85 /* Foundation.framework in Frameworks */,
+				E11A87451D8A3729886D5E1CAD97FA13 /* MapKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6C02A609FC2E1416AA200DAD9C0B026E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		22B5330CD8FCEEBD74DC3E273665D8F4 /* Pods-SONYC-Project */ = {
+			isa = PBXGroup;
+			children = (
+				641EE0B474B249A6ACD0087B96F454D2 /* Pods-SONYC-Project.modulemap */,
+				6BA4A10AA53845D3D14C8DF682B33253 /* Pods-SONYC-Project-acknowledgements.markdown */,
+				50CF8E095C6D4755F41A93A99B3E6BD1 /* Pods-SONYC-Project-acknowledgements.plist */,
+				EEAAD99E17F5718D319EA5D69676753B /* Pods-SONYC-Project-dummy.m */,
+				7F32D58C9F4B45658615C2B03B33C42E /* Pods-SONYC-Project-frameworks.sh */,
+				5CD1E861FABADE339081E4547FBA8A89 /* Pods-SONYC-Project-Info.plist */,
+				4B8AA97823A3E71A071050B112353EF1 /* Pods-SONYC-Project-umbrella.h */,
+				B1B9DF84237D9C18595A1AA104B61B5F /* Pods-SONYC-Project.debug.xcconfig */,
+				B29A4898779333A5DE630A63AD24C195 /* Pods-SONYC-Project.release.xcconfig */,
+			);
+			name = "Pods-SONYC-Project";
+			path = "Target Support Files/Pods-SONYC-Project";
+			sourceTree = "<group>";
+		};
+		3439B53AB9A2D3294EE157CA76F4FF78 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A918CB0E91FC53B512369B082DC7586D /* MapKitGoogleStyler */,
+				C81D434ECC0F987C4F45D299B04629B2 /* SwiftCSV */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6C02A609FC2E1416AA200DAD9C0B026E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				30E9D3510A2EC9FD2E9CF17229CB82BD /* Foundation.framework */,
+				B33C8AD0C1EB0C52C6E94041275C20DA /* MapKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		8A3F66101036E0BAA2A1588D084DF662 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				F82C41A953E182971ED70E0B9D38A03D /* MapKitGoogleStyler.modulemap */,
+				CBFB22138C7CA005DE1C274617C3C6E1 /* MapKitGoogleStyler-dummy.m */,
+				B301674B89EEC1F8FCB33F867B033F11 /* MapKitGoogleStyler-Info.plist */,
+				3533D1BA9A1EA21222F20DB7148E397E /* MapKitGoogleStyler-prefix.pch */,
+				A62283696B95190070B562E3342FF567 /* MapKitGoogleStyler-umbrella.h */,
+				248BBC8E9A8FC103C1BAF636D5311E4C /* MapKitGoogleStyler.debug.xcconfig */,
+				EF638CBAEB57DC4E1725BB1AB94707C2 /* MapKitGoogleStyler.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MapKitGoogleStyler";
+			sourceTree = "<group>";
+		};
+		91001E97EEF05D5E498259C06012A596 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EA742DFAE16CF8175119965DA3F439F1 /* SwiftCSV.modulemap */,
+				E55EF9A05201936D4F9456C7E05B9556 /* SwiftCSV-dummy.m */,
+				D8949F1ABE193F859825C582E8784C34 /* SwiftCSV-Info.plist */,
+				39295F6A278A5648AC5164C12848DBAC /* SwiftCSV-prefix.pch */,
+				0902A9342E38430A5AE03532C673CBAC /* SwiftCSV-umbrella.h */,
+				C294DEEF50E1FCECBE4838CE0780AD25 /* SwiftCSV.debug.xcconfig */,
+				A46871EB392B457C972D34B502285564 /* SwiftCSV.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftCSV";
+			sourceTree = "<group>";
+		};
+		A918CB0E91FC53B512369B082DC7586D /* MapKitGoogleStyler */ = {
+			isa = PBXGroup;
+			children = (
+				90EBC3138F398D2390C48F0C85990F7F /* ElementType.swift */,
+				61F1E6B3BFE576E093CDB9542FBA379D /* FeatureType.swift */,
+				25B4FB80707DD9F7B7A9A4151C9F0C93 /* GoogleStyle.swift */,
+				EF21FF252F070C0895DD1532B1552AE6 /* MapKit+GoogleStyle.swift */,
+				9053E7094F38325C18E3DC7C95100364 /* MapStyle.swift */,
+				EBAEACE392612B2366E77468F39A5E67 /* StyleElement.swift */,
+				6937F654E70939B1B77B789F91AEB91B /* StylerType.swift */,
+				8A3F66101036E0BAA2A1588D084DF662 /* Support Files */,
+			);
+			name = MapKitGoogleStyler;
+			path = MapKitGoogleStyler;
+			sourceTree = "<group>";
+		};
+		BD576D2FE469AE7258F9ADCD38470809 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AF02BCD364CC464F5598541ABEBBB897 /* MapKitGoogleStyler.framework */,
+				88870419EECDB03AC315ADAFE02B7DA9 /* Pods_SONYC_Project.framework */,
+				5A6CBEAC7212DCE694AC28667C36D2D1 /* SwiftCSV.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C81D434ECC0F987C4F45D299B04629B2 /* SwiftCSV */ = {
+			isa = PBXGroup;
+			children = (
+				835293DE0A489EEE0296F50308011A75 /* CSV.swift */,
+				870E7F0FC69514C64E19C91F4465426A /* Description.swift */,
+				1990E78F222F4FB7D1F1EB935A5815D6 /* EnumeratedView.swift */,
+				DC6E625666B754909B2E9A840D707665 /* NamedView.swift */,
+				331A8DDEC3F6AD5D93E4FA77C6FDB6D2 /* Parser.swift */,
+				0749AB99DAB2ECA0816943C4A3EF6EBC /* ParsingState.swift */,
+				FC8AC365E475D4C242D730991158E96F /* String+Lines.swift */,
+				91001E97EEF05D5E498259C06012A596 /* Support Files */,
+			);
+			name = SwiftCSV;
+			path = SwiftCSV;
+			sourceTree = "<group>";
+		};
+		CDA1B57147182078DBC6E747323CDE0A /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				22B5330CD8FCEEBD74DC3E273665D8F4 /* Pods-SONYC-Project */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				3439B53AB9A2D3294EE157CA76F4FF78 /* Pods */,
+				BD576D2FE469AE7258F9ADCD38470809 /* Products */,
+				CDA1B57147182078DBC6E747323CDE0A /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		2BC6605CC64A16F49ADBCEECB7148710 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4843041C61147136A8180D54595572CD /* Pods-SONYC-Project-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9454A035013F19F5F9313F2C6B6FD591 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A86CFB0F97C95200549E59C87E18DD82 /* SwiftCSV-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CB540150764B08EFCEC2D8D154FFF47D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FFC7013EA1CF0C158E68FCE8123F9AB4 /* MapKitGoogleStyler-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		838340E82142BE5F03033C97A5C86014 /* Pods-SONYC-Project */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C1DF0271F11B4F180A09F19FD8504B0C /* Build configuration list for PBXNativeTarget "Pods-SONYC-Project" */;
+			buildPhases = (
+				2BC6605CC64A16F49ADBCEECB7148710 /* Headers */,
+				4F9AC976FA52E9D15B738B2D8E557CA0 /* Sources */,
+				53F8F95FC03C0DBEEEA888BF407724FC /* Frameworks */,
+				EE0EADF49D9ECD917907405D673C8F21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				526BD3B55313DD595C256F4340B531B3 /* PBXTargetDependency */,
+				291091209E12DE54FA635E475BD7A284 /* PBXTargetDependency */,
+			);
+			name = "Pods-SONYC-Project";
+			productName = "Pods-SONYC-Project";
+			productReference = 88870419EECDB03AC315ADAFE02B7DA9 /* Pods_SONYC_Project.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A384F059A39EEEC92C37F789F58DF8B0 /* MapKitGoogleStyler */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B6413ABC62522143D9BE05DCFC33E759 /* Build configuration list for PBXNativeTarget "MapKitGoogleStyler" */;
+			buildPhases = (
+				CB540150764B08EFCEC2D8D154FFF47D /* Headers */,
+				D184D034D4399D5637C965A370DA9B4A /* Sources */,
+				E30F5B2544F8A940603A0AC5CF9CB41D /* Frameworks */,
+				1620D72585300F248BBDDD6D74C7BE5F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MapKitGoogleStyler;
+			productName = MapKitGoogleStyler;
+			productReference = AF02BCD364CC464F5598541ABEBBB897 /* MapKitGoogleStyler.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		B7465E4C13FFC9CE6D359E31F65D6825 /* SwiftCSV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EDCBB878FE817CF7378757F7C30D1616 /* Build configuration list for PBXNativeTarget "SwiftCSV" */;
+			buildPhases = (
+				9454A035013F19F5F9313F2C6B6FD591 /* Headers */,
+				5DB8683FD4EC2E07E03B765DEC4CAA24 /* Sources */,
+				95C2121F23D1529DA9152E5CA1DC2B3A /* Frameworks */,
+				A8645B289EFCD27C4334F0DF62673388 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftCSV;
+			productName = SwiftCSV;
+			productReference = 5A6CBEAC7212DCE694AC28667C36D2D1 /* SwiftCSV.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = BD576D2FE469AE7258F9ADCD38470809 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A384F059A39EEEC92C37F789F58DF8B0 /* MapKitGoogleStyler */,
+				838340E82142BE5F03033C97A5C86014 /* Pods-SONYC-Project */,
+				B7465E4C13FFC9CE6D359E31F65D6825 /* SwiftCSV */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1620D72585300F248BBDDD6D74C7BE5F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A8645B289EFCD27C4334F0DF62673388 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE0EADF49D9ECD917907405D673C8F21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F9AC976FA52E9D15B738B2D8E557CA0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06A1E1BF6FE5BC8D831FDF07E5C406F1 /* Pods-SONYC-Project-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5DB8683FD4EC2E07E03B765DEC4CAA24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0741320F4029C077E6C87F24FBBE1921 /* CSV.swift in Sources */,
+				E4326632509DC119D9F20A4ADF1A5EDB /* Description.swift in Sources */,
+				5D7F9243C47FDAE33C85C4E38E3420F2 /* EnumeratedView.swift in Sources */,
+				AC3A9BBBC696D7F15419180CBE24DE2A /* NamedView.swift in Sources */,
+				154DA87F9CFE7544E755F5D133AD4E2E /* Parser.swift in Sources */,
+				837565F200CD03AD302FB1FEADDBD6DB /* ParsingState.swift in Sources */,
+				18E8699E19BF79678DE08904FCB53F2B /* String+Lines.swift in Sources */,
+				86AA9FC981C6AD5D03CA1D4BFD51FD1D /* SwiftCSV-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D184D034D4399D5637C965A370DA9B4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				59BEC0846A2C65972752CEC948139714 /* ElementType.swift in Sources */,
+				5011E29CDE30A43CF2A7F781A30974FB /* FeatureType.swift in Sources */,
+				ADB711F9FDA7908F2B40BDF85BDF505A /* GoogleStyle.swift in Sources */,
+				4B4B817A22A48F9C7DF534A126760F13 /* MapKit+GoogleStyle.swift in Sources */,
+				247FAAE57CD280F33A723C6F21E39D73 /* MapKitGoogleStyler-dummy.m in Sources */,
+				A9914A6BD06B94D19517C18FEC4D36FB /* MapStyle.swift in Sources */,
+				49FF6A72A953E3733DA318DB65238AB9 /* StyleElement.swift in Sources */,
+				4569D12EE21687562A47065F91120B55 /* StylerType.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		291091209E12DE54FA635E475BD7A284 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftCSV;
+			target = B7465E4C13FFC9CE6D359E31F65D6825 /* SwiftCSV */;
+			targetProxy = E927D3218B244C0E1C5410C44296969E /* PBXContainerItemProxy */;
+		};
+		526BD3B55313DD595C256F4340B531B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MapKitGoogleStyler;
+			target = A384F059A39EEEC92C37F789F58DF8B0 /* MapKitGoogleStyler */;
+			targetProxy = 420B86AC6F4CEACE6613F57546E71FC0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		196DFA3E4A09A28224918543529A1885 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		443AD6AB4D06F0F7C1DC5A53D7BCA059 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B29A4898779333A5DE630A63AD24C195 /* Pods-SONYC-Project.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		58B62F74CEEF30DE4B633F456F350179 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C294DEEF50E1FCECBE4838CE0780AD25 /* SwiftCSV.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftCSV/SwiftCSV-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftCSV/SwiftCSV-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftCSV/SwiftCSV.modulemap";
+				PRODUCT_MODULE_NAME = SwiftCSV;
+				PRODUCT_NAME = SwiftCSV;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		975473CEF33FF4CB73E7AC1FFE0C65CB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B1B9DF84237D9C18595A1AA104B61B5F /* Pods-SONYC-Project.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9DB8280FE60576053883B268C221499A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = EF638CBAEB57DC4E1725BB1AB94707C2 /* MapKitGoogleStyler.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MapKitGoogleStyler/MapKitGoogleStyler-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MapKitGoogleStyler/MapKitGoogleStyler-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/MapKitGoogleStyler/MapKitGoogleStyler.modulemap";
+				PRODUCT_MODULE_NAME = MapKitGoogleStyler;
+				PRODUCT_NAME = MapKitGoogleStyler;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		A0A65300A74C69437AE5F136ED3445A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 248BBC8E9A8FC103C1BAF636D5311E4C /* MapKitGoogleStyler.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/MapKitGoogleStyler/MapKitGoogleStyler-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MapKitGoogleStyler/MapKitGoogleStyler-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/MapKitGoogleStyler/MapKitGoogleStyler.modulemap";
+				PRODUCT_MODULE_NAME = MapKitGoogleStyler;
+				PRODUCT_NAME = MapKitGoogleStyler;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B01D14FDC83DCF9D4BE53066BEA96D05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		DBA43334BF2EE90EA4F8C961236FA6E5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A46871EB392B457C972D34B502285564 /* SwiftCSV.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftCSV/SwiftCSV-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/SwiftCSV/SwiftCSV-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/SwiftCSV/SwiftCSV.modulemap";
+				PRODUCT_MODULE_NAME = SwiftCSV;
+				PRODUCT_NAME = SwiftCSV;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				196DFA3E4A09A28224918543529A1885 /* Debug */,
+				B01D14FDC83DCF9D4BE53066BEA96D05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B6413ABC62522143D9BE05DCFC33E759 /* Build configuration list for PBXNativeTarget "MapKitGoogleStyler" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A0A65300A74C69437AE5F136ED3445A1 /* Debug */,
+				9DB8280FE60576053883B268C221499A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C1DF0271F11B4F180A09F19FD8504B0C /* Build configuration list for PBXNativeTarget "Pods-SONYC-Project" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				975473CEF33FF4CB73E7AC1FFE0C65CB /* Debug */,
+				443AD6AB4D06F0F7C1DC5A53D7BCA059 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EDCBB878FE817CF7378757F7C30D1616 /* Build configuration list for PBXNativeTarget "SwiftCSV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				58B62F74CEEF30DE4B633F456F350179 /* Debug */,
+				DBA43334BF2EE90EA4F8C961236FA6E5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
