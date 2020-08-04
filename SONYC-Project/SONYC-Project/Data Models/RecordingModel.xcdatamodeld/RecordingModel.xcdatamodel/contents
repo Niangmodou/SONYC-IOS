@@ -7,7 +7,13 @@
         <attribute name="maxDecibel" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="minDecibel" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
+    <entity name="ReportIncident" representedClassName="ReportIncident" syncable="YES" codeGenerationType="class">
+        <attribute name="latitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="sonycType" optional="YES" attributeType="String"/>
+    </entity>
     <elements>
         <element name="Recording" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="ReportIncident" positionX="-63" positionY="18" width="128" height="88"/>
     </elements>
 </model>

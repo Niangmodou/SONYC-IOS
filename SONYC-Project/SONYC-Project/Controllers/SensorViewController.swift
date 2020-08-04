@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwiftCSV
 
 class SensorViewController: UIViewController {
 
@@ -71,6 +72,69 @@ class SensorViewController: UIViewController {
     
     //Functions to fetch data from the APIS and save them to CoreData
     func loadData(){
+        print("hi")
+        getDOBPermitData()
+    }
+    
+    func getDOBPermitData(){
+        let url = URL(string: "https://data.cityofnewyork.us/resource/ipu4-2q9a.json?zip_code=10001")
+    
+        let task = URLSession.shared.dataTask(with: url!){ (data,response,error) in
+            //Making a call to the API and retrieving the data response
+            guard let dataResponse = data, error == nil else{
+                print(error?.localizedDescription ?? "Response Error")
+                return
+            }
+            do{
+                let jsonResult = try JSONSerialization.jsonObject(with: dataResponse, options: []) as? [Dictionary<String, AnyObject>]
+                
+                //print(jsonResult as Any)
+                self.saveToCoreData(jsonResponse: jsonResult as Any)
+                
+            }catch let parsingError{
+                print("Error:", parsingError)
+            }
+            
+        }
+        task.resume()
+    }
+    
+    func getAFHVData(){
+        let url = URL(string: "https://raw.githubusercontent.com/NYCDOB/ActiveAHVs/gh-pages/data/activeAHVs.csv")
+        
+        do{
+            let csv: CSV = try CSV(url: URL(resolvingAliasFileAt: url!))
+        }catch{
+            
+        }
+        
+    }
+    
+    func saveToCoreData(jsonResponse: Any){
+        DispatchQueue.main.async {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            
+            let context = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "ReportIncident", in: context)
+            
+            for item in jsonResponse as! [Dictionary<String, AnyObject>] {
+                //print(item)
+                if let longitude = (item["gis_longitude"] as? NSString)?.doubleValue {
+                    if let latitude = (item["gis_latitude"] as? NSString)?.doubleValue {
+                        
+                        let newEntity = NSManagedObject(entity: entity!, insertInto: context)
+                        print(latitude,longitude)
+                        newEntity.setValue(latitude, forKey: "latitude")
+                        newEntity.setValue(longitude, forKey: "longitude")
+                        newEntity.setValue("DOB", forKey: "sonycType")
+                    }else{
+                        print("error")
+                    }
+                }
+            }
+        }
         
     }
 }

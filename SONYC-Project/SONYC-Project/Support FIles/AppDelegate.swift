@@ -43,7 +43,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         })
         return container
     }()
-
+    
+//    lazy var persistentContainer: NSPersistentContainer = {
+//
+//        let container = NSPersistentContainer(name: "ReportIncident")
+//        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+//            if let error = error {
+//
+//                fatalError("Unresolved error, \((error as NSError).userInfo)")
+//            }
+//        })
+//        return container
+//    }()
 
 }
 

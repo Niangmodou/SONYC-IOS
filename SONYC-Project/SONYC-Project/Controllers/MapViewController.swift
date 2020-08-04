@@ -11,6 +11,7 @@ import MapKit
 import SwiftCSV
 import MapKitGoogleStyler
 import CoreLocation
+import CoreData
 
 class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate{
     
@@ -32,6 +33,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     //Variable to reference the table view
     @IBOutlet weak var tableView: UITableView!
     
+    //Variables to represent cell labels
+    @IBOutlet weak var latLabel: UILabel!
+    @IBOutlet weak var lonLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    
     //Variable to reference the address label within the TableView
     @IBOutlet weak var addressLabel: UILabel!
     
@@ -40,6 +46,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     
     //Dictionary to store buttons and image name
     var reportButtons: [UIButton:String] = [:]
+    
+    
+    //Outlets to reference the cell labels
+    //@IBOutlet weak var typeLabel: UILabel!
+    //@IBOutlet weak var lonLabel: UILabel!
+    //@IBOutlet weak var latLabel: UILabel!
     
     //Variables to store the json returned from the APIs
     var jsonResponse311: Any!
@@ -50,18 +62,29 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     let startLatitude = 40.753365
     let startLongitude = -73.996367
     
+    //Dictionary to store items for table view
+    let dataDict: [String:[Double]] = ["After Hour Variances":[]]
+    
+    //Varaible to store retrieved data from CoreData
+    var myData: [NSManagedObject] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        deleteAllData()
+        //Loading and storing data from CoreData
+        getData()
         
+        configureTileOverlay()
         populateButtonDictionary()
         styleButtons()
         //getDOBPermitData()
         //get311Data()
         //print(self.jsonResponseDOB as Any)
         //configureSearchBar()
-        getAHVData()
+        
+        
         mapView.delegate = self
-        configureTileOverlay()
+        
     
         let location = CLLocationCoordinate2D(latitude: startLatitude, longitude: startLongitude)
         centerMapOnLocation(location, mapView: mapView)
@@ -79,6 +102,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         longPress.minimumPressDuration = 1.5 // in seconds
         //add gesture recognition
         mapView.addGestureRecognizer(longPress)
+        
+        //tableView.delegate = self
+        //tableView.dataSource = self
     }
     
     private func configureTileOverlay() {
@@ -97,21 +123,32 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         mapView.addOverlay(tileOverlay)
     }
     
-    //Function to combine data returned from the APIs to sort by distance from the current location
-    func getAHVData(){
-        let url = URL(string: "https://raw.githubusercontent.com/NYCDOB/ActiveAHVs/gh-pages/data/activeAHVs.csv")
-
-        //let csv: 
+    //Function to retrieve stored mapdata from CoreData
+    func getData(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
         
+        let context = appDelegate.persistentContainer.viewContext
+        let fetch = NSFetchRequest<NSManagedObject>(entityName: "ReportIncident")
+        
+        do{
+            //Loading data from CoreData
+            myData = try context.fetch(fetch)
+            //print(myData)
+            //Plot annotations onto Map
+            plotAnnotations(data: myData)
+            
+        }catch let error{
+            print("Error: \(error)")
+        }
     }
-    
-    
     
     //Function to center map on New York City
     func centerMapOnLocation(_ location: CLLocationCoordinate2D, mapView: MKMapView) {
         let regionRadius: CLLocationDistance = 5000
         let coordinateRegion = MKCoordinateRegion(center: location,
-                                                  latitudinalMeters: regionRadius * 1.00, longitudinalMeters: regionRadius * 1.00)
+                                                  latitudinalMeters: regionRadius * 0.25, longitudinalMeters: regionRadius * 0.25)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
@@ -129,6 +166,32 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         //Getting MapView to display current location
         mapView.showsUserLocation = true
         
+    }
+    
+    //Function to plot annotations onto Map
+    func plotAnnotations(data: [NSManagedObject]) {
+        print(data.count)
+        
+        for each in data {
+            let latitude = each.value(forKey: "latitude")
+            let longitude = each.value(forKey: "longitude")
+            let title = each.value(forKey: "sonycType")
+            
+            print("Benchmark 1 -----------")
+            //Creating and plotting the DOB annotation on the map
+            plotAnnotation(title: title as! String, latitude: latitude as! CLLocationDegrees, longitude: longitude as! CLLocationDegrees)
+        }
+    }
+    
+    //Function to plot annotations on the map
+    func plotAnnotation(title: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees){
+        
+        let loc = MKPointAnnotation()
+        
+        loc.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        loc.title = title
+        //print(loc.coordinate)
+        mapView.addAnnotation(loc)
     }
     
     //Function to get after hours variances csv data
@@ -149,7 +212,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     func get311Data(){
         //print(1)
         //var jsonResponse: Any!
-        let url = URL(string:"https://data.cityofnewyork.us/resource/ipu4-2q9a.json?bourough=MANHATTAN&zip_code=10001")
+        let url = URL(string:"https://data.cityofnewyork.us/resource/ipu4-2q9a.json?zip_code=10001")
         let task = URLSession.shared.dataTask(with: url!){ (data,response,error) in
             //Making a call to the API and retrieving the data response
             guard let dataResponse = data, error == nil else {
@@ -182,8 +245,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         //print(2)
         //var jsonResponse: Any!
         
-        let url = URL(string: "https://data.cityofnewyork.us/resource/ipu4-2q9a.json?borough=MANHATTAN")
-        var jsonResult: [Dictionary<String, AnyObject>]!
+        let url = URL(string: "https://data.cityofnewyork.us/resource/ipu4-2q9a.json?zip_code=10001")
+        //var jsonResult: [Dictionary<String, AnyObject>]!
         let task = URLSession.shared.dataTask(with: url!){ (data,response,error) in
             //Making a call to the API and retrieving the data response
             guard let dataResponse = data, error == nil else{
@@ -191,9 +254,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
                 return
             }
             do{
-                jsonResult = try JSONSerialization.jsonObject(with: dataResponse, options: []) as? [Dictionary<String, AnyObject>]
-                self.jsonResponseDOB = jsonResult
-                self.populateDOBMap(jsonResponse: jsonResult as Any)
+                self.jsonResponseDOB = try JSONSerialization.jsonObject(with: dataResponse, options: []) as? [Dictionary<String, AnyObject>]
+                //self.jsonResponseDOB = jsonResult
+                self.populateDOBMap(jsonResponse: self.jsonResponseDOB as Any)
                 //print("hi")
                 /*
                 if let jsonResult = try JSONSerialization.jsonObject(with: dataResponse, options: []) as? [String: Any] {
@@ -242,7 +305,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     //Function to plot the noise complaint locations received from the 311 API
     func populate311Map(jsonResponse: Any){
         print(1)
-        print(self.jsonResponse311 as Any)
+        //print(self.jsonResponse311 as Any)
+        self.jsonResponse311 = jsonResponse as! [Dictionary<String, AnyObject>]
         for item in jsonResponse as! [Dictionary<String, AnyObject>] {
             if let longitude = (item["longitude"] as? NSString)?.doubleValue {
                 if let latitude = (item["latitude"] as? NSString)?.doubleValue {
@@ -280,7 +344,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         }
     }
     
-    /*
+    
     //Function to plot the street construction permits obtained from the API
     func populatePermitMap(jsonResponse: Any){
         print(3)
@@ -297,17 +361,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
             }
         }
     }
-     */
     
-    //Function to plot annotations on the map
-    func plotAnnotation(title: String, latitude: CLLocationDegrees, longitude: CLLocationDegrees){
-        let location = MKPointAnnotation()
-        
-        location.coordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
-        location.title = title
-        
-        mapView.addAnnotation(location)
-    }
     
     //Function to populate dictionary button
     func populateButtonDictionary(){
@@ -334,6 +388,25 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         }
     }
     
+    func deleteAllData(){
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Recording")
+        fetchRequest.returnsObjectsAsFaults = false
+
+        do{
+            let results = try managedContext.fetch(fetchRequest)
+            for managedObject in results{
+                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                managedContext.delete(managedObjectData)
+            }
+        } catch let error {
+            print("Error: \(error) :(")
+        }
+    }
+    
+    
+    
     //Fucntion to add image to an annotation
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
@@ -344,7 +417,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         
         if annotation.title == "311 pin" {
             annotationView?.image = UIImage(named: "Pin_311_non-color.png")
-        }else if annotation.title == "DOB pin" {
+        }else if annotation.title == "DOB" {
             annotationView?.image = UIImage(named: "Pin_dob_non-color.png")
         }else {
             annotationView?.image = UIImage(named: "Pin_History_non-color.png")
@@ -354,6 +427,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         return annotationView
     }
     
+    
+    
     //Function to drop a pin when a user long presses the map
     @objc func mapLongPress(_ recognizer: UIGestureRecognizer){
         //Gets the location and coordinates of where the map was pressed at
@@ -361,6 +436,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         let _: CLLocationCoordinate2D = mapView.convert(touchedAt, toCoordinateFrom: self.mapView)
     }
     
+    /*
+    //Function to retrieve google maps overlay and style the map
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             if let tileOverlay = overlay as? MKTileOverlay {
                 return MKTileOverlayRenderer(tileOverlay: tileOverlay)
@@ -368,43 +445,40 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
                 return MKOverlayRenderer(overlay: overlay)
             }
     }
+ 
+ */
     
-    /*
-    //Functions to style MapKit
-    private func configureOverlay(){
-        guard let overlayFileURLString = Bundle.main.path(forResource: "overlay", ofType: "string") else {
-            return
-        }
-        
-        let overlayFileUrl = URL(fileURLWithPath: overlayFileURLString)
-        
-        //Creating tile overlay using MapKitGoogleStyler
-        guard let tileOverlay = try? MapKitGoogleStyler.buildOverlay(with: overlayFileUrl) else{
-            return
-        }
-        
-        mapView.add(tileOverlay)
-    }
-    */
 }
 
-/*
 extension MapViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        return myData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        //cell.textLabel?.text = dataDict[indexPath.row]
+        
+        //Get the contents of the current row
+        let currentRow = myData[indexPath.row]
+        
+        //Parsing information from currentRow
+        let type = currentRow.value(forKey: "sonycType")
+        let longitude = currentRow.value(forKey: "longitude")
+        let latitude = currentRow.value(forKey: "latitude")
+        
+        /*
+        cell.latLabel.text = latitude
+        cell.lonLabel.text = longitude
+        cell.typeLabel.text = type
+ */
         
         return cell
     }
 }
 
-extension MapViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        <#code#>
-    }
+extension MapViewController: UITableViewDelegate{
+    //Displaying a tapped location on the map
+    
+    
 }
-
-*/
