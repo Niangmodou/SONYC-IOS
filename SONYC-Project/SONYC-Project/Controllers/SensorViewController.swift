@@ -124,11 +124,15 @@ class SensorViewController: UIViewController {
                 if let longitude = (item["gis_longitude"] as? NSString)?.doubleValue {
                     if let latitude = (item["gis_latitude"] as? NSString)?.doubleValue {
                         
+                        let borough = item["borough"]
+                        let street = item["street_name"]
                         let newEntity = NSManagedObject(entity: entity!, insertInto: context)
-                        print(latitude,longitude)
+                        print(street,borough)
                         newEntity.setValue(latitude, forKey: "latitude")
                         newEntity.setValue(longitude, forKey: "longitude")
                         newEntity.setValue("DOB", forKey: "sonycType")
+                        newEntity.setValue(borough, forKey: "borough")
+                        newEntity.setValue(street, forKey: "street")
                     }else{
                         print("error")
                     }

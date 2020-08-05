@@ -71,6 +71,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         deleteAllData()
+        
         //Loading and storing data from CoreData
         getData()
         
@@ -428,6 +429,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     }
     
     
+    //Function to find the distance between two points in miles
+    func getDistance(reportLocation: CLLocation) -> String {
+        let currLocation = CLLocation(latitude: startLatitude, longitude: startLongitude)
+        
+        let distanceMeters = currLocation.distance(from: reportLocation)
+        
+        let distanceMiles = distanceMeters/1609.344
+        
+        return String(distanceMiles)
+    }
+    
+    //Function to get logo image based on type
+    func getImage(reportType: String) -> UIImage {
+        if reportType == "DOB" {
+            return UIImage(named: "Pin_dob_non-color.png")!
+        }
+        
+        return UIImage()
+    }
+    
     
     //Function to drop a pin when a user long presses the map
     @objc func mapLongPress(_ recognizer: UIGestureRecognizer){
@@ -443,7 +464,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
                 return MKTileOverlayRenderer(tileOverlay: tileOverlay)
             } else {
                 return MKOverlayRenderer(overlay: overlay)
-            }
+     _  }
     }
  
  */
@@ -456,7 +477,7 @@ extension MapViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mapCardCell", for: indexPath) as! MapCardCell
         //cell.textLabel?.text = dataDict[indexPath.row]
         
         //Get the contents of the current row
@@ -466,13 +487,17 @@ extension MapViewController: UITableViewDataSource {
         let type = currentRow.value(forKey: "sonycType")
         let longitude = currentRow.value(forKey: "longitude")
         let latitude = currentRow.value(forKey: "latitude")
+        let address = currentRow.value(forKey: "street")
+        let borough = currentRow.value(forKey: "borough")
         
-        /*
-        cell.latLabel.text = latitude
-        cell.lonLabel.text = longitude
-        cell.typeLabel.text = type
- */
+        //Getting the logo image based on which type of recording
+        let image = getImage(reportType: type as! String)
         
+        //Finding the distance between two coordinates
+        let reportLocation = CLLocation(latitude: latitude as! CLLocationDegrees, longitude: longitude as! CLLocationDegrees)
+        let distance = getDistance(reportLocation: reportLocation)
+        
+        cell.configure(logo: image, distance: distance, address: address as! String, location: borough as! String)
         return cell
     }
 }

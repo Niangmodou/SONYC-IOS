@@ -41,6 +41,7 @@
 		52DE5D9B24A188200097C63F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5D9924A188200097C63F /* LaunchScreen.storyboard */; };
 		52E228B324C0BDCF008910E8 /* Pin_dob_non-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E228B124C0BDCE008910E8 /* Pin_dob_non-color.png */; };
 		52E228B424C0BDCF008910E8 /* Pin_311_non-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E228B224C0BDCF008910E8 /* Pin_311_non-color.png */; };
+		52E3C94E24DAEEF1001B4764 /* MapCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3C94D24DAEEF1001B4764 /* MapCardCell.swift */; };
 		C1DA4EF2D2368696CF45FC4B /* Pods_SONYC_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E61CCD0FC8EE7E62BD062D /* Pods_SONYC_Project.framework */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		52DE5D9C24A188200097C63F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		52E228B124C0BDCE008910E8 /* Pin_dob_non-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pin_dob_non-color.png"; path = "../../../../../Downloads/Pin_dob_non-color.png"; sourceTree = "<group>"; };
 		52E228B224C0BDCF008910E8 /* Pin_311_non-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pin_311_non-color.png"; path = "../../../../../Downloads/Pin_311_non-color.png"; sourceTree = "<group>"; };
+		52E3C94D24DAEEF1001B4764 /* MapCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardCell.swift; sourceTree = "<group>"; };
 		9288A55BE31AC03729419141 /* Pods-SONYC-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SONYC-Project.debug.xcconfig"; path = "Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project.debug.xcconfig"; sourceTree = "<group>"; };
 		CDAB56B5DF6C49874CE96AF4 /* Pods-SONYC-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SONYC-Project.release.xcconfig"; path = "Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				520AA5A824A94A68003D5012 /* CardCell.swift */,
+				52E3C94D24DAEEF1001B4764 /* MapCardCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 				52DE5D8F24A1881C0097C63F /* SceneDelegate.swift in Sources */,
 				52B2F60E24B5732100535440 /* RecordDescriptionViewController.swift in Sources */,
 				5208A2A924A41EBE0002A522 /* RecordingModel.xcdatamodeld in Sources */,
+				52E3C94E24DAEEF1001B4764 /* MapCardCell.swift in Sources */,
 				520AA5A924A94A68003D5012 /* CardCell.swift in Sources */,
 				520E611324AE5A38009A8304 /* SensorViewController.swift in Sources */,
 				528C6E5624A96F3100D7D6F1 /* MapViewController.swift in Sources */,
