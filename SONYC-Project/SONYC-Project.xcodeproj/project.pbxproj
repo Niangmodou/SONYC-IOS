@@ -26,12 +26,17 @@
 		522306D124B6C155003D54E1 /* Frustrated face.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306CD24B6C154003D54E1 /* Frustrated face.png */; };
 		522306D224B6C155003D54E1 /* Icon_Walking.png in Resources */ = {isa = PBXBuildFile; fileRef = 522306CE24B6C154003D54E1 /* Icon_Walking.png */; };
 		5253D22D24D20AC1004E5B98 /* overlay.json in Resources */ = {isa = PBXBuildFile; fileRef = 5253D22C24D20ABF004E5B98 /* overlay.json */; };
+		526E92BC24EA445E006F0B3D /* Pin_311_non-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 526E92BB24EA445E006F0B3D /* Pin_311_non-color.png */; };
+		526E92BE24EA4462006F0B3D /* Pin_dob_non-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 526E92BD24EA4462006F0B3D /* Pin_dob_non-color.png */; };
+		526E92C024EA4473006F0B3D /* Logo_Dob_non color.png in Resources */ = {isa = PBXBuildFile; fileRef = 526E92BF24EA4473006F0B3D /* Logo_Dob_non color.png */; };
+		526E92C224EA4607006F0B3D /* nyc311.svg in Resources */ = {isa = PBXBuildFile; fileRef = 526E92C124EA4606006F0B3D /* nyc311.svg */; };
+		526E92C424EA460C006F0B3D /* nycdob.svg in Resources */ = {isa = PBXBuildFile; fileRef = 526E92C324EA460B006F0B3D /* nycdob.svg */; };
+		526E92C624EA4610006F0B3D /* nycdot.svg in Resources */ = {isa = PBXBuildFile; fileRef = 526E92C524EA4610006F0B3D /* nycdot.svg */; };
 		528C6E5624A96F3100D7D6F1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528C6E5524A96F3100D7D6F1 /* MapViewController.swift */; };
 		52B2F60E24B5732100535440 /* RecordDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2F60D24B5732100535440 /* RecordDescriptionViewController.swift */; };
 		52CA6EE224B75976003FB9F6 /* Logo_Dot_not color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CA6EDE24B75975003FB9F6 /* Logo_Dot_not color.png */; };
 		52CA6EE324B75976003FB9F6 /* Pin_History_non-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CA6EDF24B75975003FB9F6 /* Pin_History_non-color.png */; };
 		52CA6EE524B75976003FB9F6 /* Logo_311_non color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CA6EE124B75975003FB9F6 /* Logo_311_non color.png */; };
-		52CA6EE724B76572003FB9F6 /* Logo_Dob_non color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CA6EE624B76572003FB9F6 /* Logo_Dob_non color.png */; };
 		52DE5D8D24A1881C0097C63F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5D8C24A1881C0097C63F /* AppDelegate.swift */; };
 		52DE5D8F24A1881C0097C63F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5D8E24A1881C0097C63F /* SceneDelegate.swift */; };
 		52DE5D9124A1881C0097C63F /* RecordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52DE5D9024A1881C0097C63F /* RecordViewController.swift */; };
@@ -39,8 +44,6 @@
 		52DE5D9624A1881C0097C63F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5D9424A1881C0097C63F /* Main.storyboard */; };
 		52DE5D9824A188200097C63F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5D9724A188200097C63F /* Assets.xcassets */; };
 		52DE5D9B24A188200097C63F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 52DE5D9924A188200097C63F /* LaunchScreen.storyboard */; };
-		52E228B324C0BDCF008910E8 /* Pin_dob_non-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E228B124C0BDCE008910E8 /* Pin_dob_non-color.png */; };
-		52E228B424C0BDCF008910E8 /* Pin_311_non-color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52E228B224C0BDCF008910E8 /* Pin_311_non-color.png */; };
 		52E3C94E24DAEEF1001B4764 /* MapCardCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52E3C94D24DAEEF1001B4764 /* MapCardCell.swift */; };
 		C1DA4EF2D2368696CF45FC4B /* Pods_SONYC_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07E61CCD0FC8EE7E62BD062D /* Pods_SONYC_Project.framework */; };
 /* End PBXBuildFile section */
@@ -66,12 +69,17 @@
 		522306CD24B6C154003D54E1 /* Frustrated face.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Frustrated face.png"; sourceTree = "<group>"; };
 		522306CE24B6C154003D54E1 /* Icon_Walking.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Walking.png; sourceTree = "<group>"; };
 		5253D22C24D20ABF004E5B98 /* overlay.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = overlay.json; sourceTree = "<group>"; };
+		526E92BB24EA445E006F0B3D /* Pin_311_non-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pin_311_non-color.png"; sourceTree = "<group>"; };
+		526E92BD24EA4462006F0B3D /* Pin_dob_non-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pin_dob_non-color.png"; sourceTree = "<group>"; };
+		526E92BF24EA4473006F0B3D /* Logo_Dob_non color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo_Dob_non color.png"; sourceTree = "<group>"; };
+		526E92C124EA4606006F0B3D /* nyc311.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nyc311.svg; sourceTree = "<group>"; };
+		526E92C324EA460B006F0B3D /* nycdob.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nycdob.svg; sourceTree = "<group>"; };
+		526E92C524EA4610006F0B3D /* nycdot.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nycdot.svg; sourceTree = "<group>"; };
 		528C6E5524A96F3100D7D6F1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52B2F60D24B5732100535440 /* RecordDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDescriptionViewController.swift; sourceTree = "<group>"; };
 		52CA6EDE24B75975003FB9F6 /* Logo_Dot_not color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo_Dot_not color.png"; sourceTree = "<group>"; };
 		52CA6EDF24B75975003FB9F6 /* Pin_History_non-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pin_History_non-color.png"; sourceTree = "<group>"; };
 		52CA6EE124B75975003FB9F6 /* Logo_311_non color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo_311_non color.png"; sourceTree = "<group>"; };
-		52CA6EE624B76572003FB9F6 /* Logo_Dob_non color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Logo_Dob_non color.png"; path = "../../../../../Downloads/Logo_Dob_non color.png"; sourceTree = "<group>"; };
 		52DE5D8924A1881C0097C63F /* SONYC-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SONYC-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52DE5D8C24A1881C0097C63F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		52DE5D8E24A1881C0097C63F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,8 +89,6 @@
 		52DE5D9724A188200097C63F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		52DE5D9A24A188200097C63F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		52DE5D9C24A188200097C63F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		52E228B124C0BDCE008910E8 /* Pin_dob_non-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pin_dob_non-color.png"; path = "../../../../../Downloads/Pin_dob_non-color.png"; sourceTree = "<group>"; };
-		52E228B224C0BDCF008910E8 /* Pin_311_non-color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Pin_311_non-color.png"; path = "../../../../../Downloads/Pin_311_non-color.png"; sourceTree = "<group>"; };
 		52E3C94D24DAEEF1001B4764 /* MapCardCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCardCell.swift; sourceTree = "<group>"; };
 		9288A55BE31AC03729419141 /* Pods-SONYC-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SONYC-Project.debug.xcconfig"; path = "Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project.debug.xcconfig"; sourceTree = "<group>"; };
 		CDAB56B5DF6C49874CE96AF4 /* Pods-SONYC-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SONYC-Project.release.xcconfig"; path = "Target Support Files/Pods-SONYC-Project/Pods-SONYC-Project.release.xcconfig"; sourceTree = "<group>"; };
@@ -156,8 +162,9 @@
 			isa = PBXGroup;
 			children = (
 				520E611524AE671C009A8304 /* logo.png */,
-				52E228B224C0BDCF008910E8 /* Pin_311_non-color.png */,
-				52E228B124C0BDCE008910E8 /* Pin_dob_non-color.png */,
+				526E92BB24EA445E006F0B3D /* Pin_311_non-color.png */,
+				526E92BD24EA4462006F0B3D /* Pin_dob_non-color.png */,
+				526E92BF24EA4473006F0B3D /* Logo_Dob_non color.png */,
 				520E611724AE6725009A8304 /* Hamburger.png */,
 				522306BE24B6C0A4003D54E1 /* Icon_Annoyed Face.png */,
 				522306BC24B6C0A3003D54E1 /* Icon_Dizzy Face.png */,
@@ -172,9 +179,11 @@
 				522306CC24B6C154003D54E1 /* Icon_Angry Face.png */,
 				522306CB24B6C154003D54E1 /* Icon_Sleeping man.png */,
 				522306CE24B6C154003D54E1 /* Icon_Walking.png */,
+				526E92C524EA4610006F0B3D /* nycdot.svg */,
+				526E92C324EA460B006F0B3D /* nycdob.svg */,
+				526E92C124EA4606006F0B3D /* nyc311.svg */,
 				52CA6EE124B75975003FB9F6 /* Logo_311_non color.png */,
 				52CA6EDE24B75975003FB9F6 /* Logo_Dot_not color.png */,
-				52CA6EE624B76572003FB9F6 /* Logo_Dob_non color.png */,
 				52CA6EDF24B75975003FB9F6 /* Pin_History_non-color.png */,
 			);
 			path = "Images and Logos";
@@ -279,15 +288,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				522306D224B6C155003D54E1 /* Icon_Walking.png in Resources */,
-				52E228B424C0BDCF008910E8 /* Pin_311_non-color.png in Resources */,
+				526E92BC24EA445E006F0B3D /* Pin_311_non-color.png in Resources */,
 				52CA6EE224B75976003FB9F6 /* Logo_Dot_not color.png in Resources */,
 				520E611624AE671D009A8304 /* logo.png in Resources */,
 				52CA6EE524B75976003FB9F6 /* Logo_311_non color.png in Resources */,
+				526E92C624EA4610006F0B3D /* nycdot.svg in Resources */,
 				522306C324B6C0A6003D54E1 /* Icon_Indoor.png in Resources */,
 				522306C224B6C0A6003D54E1 /* Icon_Outdoor.png in Resources */,
 				52DE5D9B24A188200097C63F /* LaunchScreen.storyboard in Resources */,
-				52E228B324C0BDCF008910E8 /* Pin_dob_non-color.png in Resources */,
 				522306C524B6C0A6003D54E1 /* Icon_Dizzy Face.png in Resources */,
+				526E92C224EA4607006F0B3D /* nyc311.svg in Resources */,
 				5253D22D24D20AC1004E5B98 /* overlay.json in Resources */,
 				522306C824B6C0A6003D54E1 /* Icon_Parenting.png in Resources */,
 				52DE5D9824A188200097C63F /* Assets.xcassets in Resources */,
@@ -298,11 +308,13 @@
 				522306C424B6C0A6003D54E1 /* Icon_Happy Face.png in Resources */,
 				52CA6EE324B75976003FB9F6 /* Pin_History_non-color.png in Resources */,
 				522306D124B6C155003D54E1 /* Frustrated face.png in Resources */,
+				526E92BE24EA4462006F0B3D /* Pin_dob_non-color.png in Resources */,
 				522306C724B6C0A6003D54E1 /* Icon_Annoyed Face.png in Resources */,
 				522306C924B6C0A6003D54E1 /* Icon_Working man.png in Resources */,
+				526E92C424EA460C006F0B3D /* nycdob.svg in Resources */,
 				522306D024B6C155003D54E1 /* Icon_Angry Face.png in Resources */,
+				526E92C024EA4473006F0B3D /* Logo_Dob_non color.png in Resources */,
 				522306CA24B6C0A6003D54E1 /* Icon_meh face.png in Resources */,
-				52CA6EE724B76572003FB9F6 /* Logo_Dob_non color.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

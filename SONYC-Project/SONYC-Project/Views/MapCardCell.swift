@@ -14,24 +14,34 @@ class MapCardCell: UITableViewCell {
     @IBOutlet weak var cardView: UIView!
     
     //Outlets to reference the table view cell
-    @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var logoImage: UIImageView!
+    @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var apiLabel: UILabel!
+    @IBOutlet weak var permitLabel: UILabel!
     
     //Sets up the cell
-    func configure(logo: UIImage, distance: String, address: String, location: String) {
+    func configure(id: String, apiType: String, logo: UIImage, distance: String, address: String, location: String, start: String, end: String) {
         
         //Setting labels to update each report
+        //Setting labels to update each report
+        idLabel.text = id
         logoImage.image = logo
         distanceLabel.text = "\(distance) mi"
         addressLabel.text = address
-        locationLabel.text = "\(location), NY"
+        locationLabel.text = location
+        apiLabel.text = apiType
+        permitLabel.text = "Permit: \(start) to \(end)"
         
         //Fitting text to label
+        idLabel.sizeToFit()
+        apiLabel.sizeToFit()
         distanceLabel.sizeToFit()
         addressLabel.sizeToFit()
         locationLabel.sizeToFit()
+        permitLabel.sizeToFit()
         
         //Styling the card
         cardView.layer.shadowColor = UIColor.gray.cgColor

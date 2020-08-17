@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import SwiftCSV
+import SwiftSVG
 import MapKitGoogleStyler
 import CoreLocation
 import CoreData
@@ -442,13 +443,35 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     
     //Function to get logo image based on type
     func getImage(reportType: String) -> UIImage {
-        if reportType == "DOB" {
-            return UIImage(named: "Pin_dob_non-color.png")!
+        var image: UIImage!
+        print("hi:",reportType)
+        if reportType == "DOB" || reportType == "AFHV" {
+            image = UIImage(named: "Logo_Dob_non color.png")
+        }else if reportType == "311" {
+            image = UIImage(named: "Logo_311_non color.png")
+        }else if reportType == "DOT" {
+            image = UIImage(named: "Logo_Dot_not color.png")
         }
         
-        return UIImage()
+        return image
     }
     
+    //Function to get api name based on type
+    func getType(api: String) -> String {
+        var text: String!
+        
+        if api == "DOB" {
+            text = "Building Construction Permit"
+        }else if api == "DOT" {
+            text = "Street Construction Permit"
+        }else if api == "311" {
+            text = "311 Noise Report"
+        }else if api == "AHV" {
+            text = "After Hour Variances"
+        }
+        
+        return text
+    }
     
     //Function to drop a pin when a user long presses the map
     @objc func mapLongPress(_ recognizer: UIGestureRecognizer){
@@ -484,20 +507,37 @@ extension MapViewController: UITableViewDataSource {
         let currentRow = myData[indexPath.row]
         
         //Parsing information from currentRow
-        let type = currentRow.value(forKey: "sonycType")
-        let longitude = currentRow.value(forKey: "longitude")
-        let latitude = currentRow.value(forKey: "latitude")
-        let address = currentRow.value(forKey: "street")
-        let borough = currentRow.value(forKey: "borough")
+        //Parsing information from currentRow
+        let api = currentRow.value(forKey: "sonycType") as! String
+        let type = getType(api: api)
+        
+        //Location Data
+        let id = currentRow.value(forKey: "unique_id") as! String
+        let house = currentRow.value(forKey: "house_num") as! String
+        let street = currentRow.value(forKey: "street") as! String
+        let borough = currentRow.value(forKey: "borough") as! String
+        let zipcode = currentRow.value(forKey: "zipcode") as! String
         
         //Getting the logo image based on which type of recording
-        let image = getImage(reportType: type as! String)
+        let image = getImage(reportType: api as! String)
         
-        //Finding the distance between two coordinates
-        let reportLocation = CLLocation(latitude: latitude as! CLLocationDegrees, longitude: longitude as! CLLocationDegrees)
-        let distance = getDistance(reportLocation: reportLocation)
+        let address = "\(house) \(street)"
+        let distance = currentRow.value(forKey: "distance") as! String
         
-        cell.configure(logo: image, distance: distance, address: address as! String, location: borough as! String)
+        let location = "\(borough),NY \(zipcode)"
+        //Date Information
+        let startDate = currentRow.value(forKey: "startDate") as! String
+        let endDate = currentRow.value(forKey: "endDate") as! String
+    
+        
+        cell.configure(id: id,
+                       apiType: type,
+                       logo: image,
+                       distance: distance,
+                       address: address,
+                       location: location,
+                       start: startDate,
+                       end: endDate)
         return cell
     }
 }

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 import SwiftCSV
 
 class SensorViewController: UIViewController {
@@ -70,6 +71,21 @@ class SensorViewController: UIViewController {
         self.present(nextViewController, animated: false, completion: nil)
     }
     
+    //Function to get a users current location and distance
+    func getDistance(reportLocation: CLLocation) -> String {
+        //Latitude and Longitude of 34th street and 9th ave
+        let currLat = 40.753365
+        let currLon = -73.996367
+        
+        let currLocation = CLLocation(latitude: currLat, longitude: currLon)
+        
+        let distanceMeters = currLocation.distance(from: reportLocation)
+        
+        let distanceMiles = distanceMeters/1609.344
+        
+        return String(distanceMiles)
+    }
+    
     //Functions to fetch data from the APIS and save them to CoreData
     func loadData(){
         print("hi")
@@ -89,7 +105,8 @@ class SensorViewController: UIViewController {
                 let jsonResult = try JSONSerialization.jsonObject(with: dataResponse, options: []) as? [Dictionary<String, AnyObject>]
                 
                 //print(jsonResult as Any)
-                self.saveToCoreData(jsonResponse: jsonResult as Any)
+                self.saveToCoreData(jsonResponse: jsonResult as Any, api: "DOB")
+                
                 
             }catch let parsingError{
                 print("Error:", parsingError)
@@ -100,17 +117,19 @@ class SensorViewController: UIViewController {
     }
     
     func getAFHVData(){
-        let url = URL(string: "https://raw.githubusercontent.com/NYCDOB/ActiveAHVs/gh-pages/data/activeAHVs.csv")
-        
-        do{
-            let csv: CSV = try CSV(url: URL(resolvingAliasFileAt: url!))
-        }catch{
-            
+        if let url = URL(string: "https://raw.githubusercontent.com/NYCDOB/ActiveAHVs/gh-pages/data/activeAHVs.csv") {
+            do{
+                let contents = try String()
+            }catch{
+                
+            }
         }
+        
+        
         
     }
     
-    func saveToCoreData(jsonResponse: Any){
+    func saveToCoreData(jsonResponse: Any, api: String){
         DispatchQueue.main.async {
             guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
                 return
@@ -124,15 +143,46 @@ class SensorViewController: UIViewController {
                 if let longitude = (item["gis_longitude"] as? NSString)?.doubleValue {
                     if let latitude = (item["gis_latitude"] as? NSString)?.doubleValue {
                         
+                        //Job Data
+                        let id = (item["bin__"]) as! String
+                        let job_type = item["job_type"] as! String
+                        
+                        //Location Data
+                        let house = item["house__"]
                         let borough = item["borough"]
                         let street = item["street_name"]
+                        let zipcode = item["zip_code"]
+                        
+                        //Date Information
+                        let startDate = item["job_start_date"]
+                        let endDate = item["expiration_date"]
+                        
+                        //Distance Location
+                        let reportLoc = CLLocation(latitude: latitude, longitude: longitude)
+                        let distance = self.getDistance(reportLocation: reportLoc)
+                        let roundedDistance = String(format: "%.3f", distance)
+                        
+                
                         let newEntity = NSManagedObject(entity: entity!, insertInto: context)
-                        print(street,borough)
+                        
+                        newEntity.setValue(job_type, forKey: "job_type")
+                        newEntity.setValue(id, forKey: "unique_id")
+                        newEntity.setValue(api, forKey: "sonycType")
+                            
+                        //Stores location data
+                        newEntity.setValue(house, forKey: "house_num")
                         newEntity.setValue(latitude, forKey: "latitude")
                         newEntity.setValue(longitude, forKey: "longitude")
-                        newEntity.setValue("DOB", forKey: "sonycType")
                         newEntity.setValue(borough, forKey: "borough")
                         newEntity.setValue(street, forKey: "street")
+                        newEntity.setValue(distance, forKey: "distance")
+                        newEntity.setValue(zipcode, forKey: "zipcode")
+                        
+                        //Storing Date information
+                        newEntity.setValue(startDate, forKey: "startDate")
+                        newEntity.setValue(endDate, forKey: "endDate")
+                    
+                        
                     }else{
                         print("error")
                     }

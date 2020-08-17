@@ -4,4 +4,5 @@ target 'SONYC-Project' do
     use_frameworks!
     pod "SwiftCSV"
     pod "MapKitGoogleStyler"
+    pod 'SwiftSVG', '~> 2.0'
 end

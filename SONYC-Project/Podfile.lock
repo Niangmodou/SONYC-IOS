@@ -1,20 +1,24 @@
 PODS:
   - MapKitGoogleStyler (0.1.1)
   - SwiftCSV (0.5.6)
+  - SwiftSVG (2.3.2)
 
 DEPENDENCIES:
   - MapKitGoogleStyler
   - SwiftCSV
+  - SwiftSVG (~> 2.0)
 
 SPEC REPOS:
   trunk:
     - MapKitGoogleStyler
     - SwiftCSV
+    - SwiftSVG
 
 SPEC CHECKSUMS:
   MapKitGoogleStyler: 8efdceb664fc1748a62a9e3b50a34b67a34247bc
   SwiftCSV: efb4a15dd7f2f1212b3d6986f97a3369ff6c5100
+  SwiftSVG: ca7f64e403b8ea7ea8eba8c823b83ba4a059834c
 
-PODFILE CHECKSUM: d9eaad109e5128b7051fdbb840a5736b79e7cbd4
+PODFILE CHECKSUM: 40a765cc4c73aa69454b213091d57d510be749da
 
 COCOAPODS: 1.9.3
