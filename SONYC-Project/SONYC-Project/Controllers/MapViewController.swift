@@ -441,7 +441,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     //Function to get logo image based on type
     func getImage(reportType: String) -> UIImage {
         var image: UIImage!
-        if reportType == "DOB" || reportType == "AFHV" {
+        if reportType == "DOB" || reportType == "AHV" {
             image = UIImage(named: "Logo_Dob_non color.png")
         }else if reportType == "311" {
             image = UIImage(named: "Logo_311_non color.png")
@@ -509,15 +509,23 @@ extension MapViewController: UITableViewDataSource {
         
         //Location Data
         let id = currentRow.value(forKey: "unique_id") as! String
-        let house = currentRow.value(forKey: "house_num") as! String
-        let street = currentRow.value(forKey: "street") as! String
+        
+        var address: String!
+        
+        if api == "DOB" {
+            let house = try currentRow.value(forKey: "house_num") as! String
+            let street = try currentRow.value(forKey: "street") as! String
+        
+            address = "\(house) \(street)"
+        }else{
+            address = (currentRow.value(forKey: "street") as! String)
+        }
         let borough = currentRow.value(forKey: "borough") as! String
         let zipcode = currentRow.value(forKey: "zipcode") as! String
         
         //Getting the logo image based on which type of recording
         let image = getImage(reportType: api as! String)
         
-        let address = "\(house) \(street)"
         let distance = currentRow.value(forKey: "distance") as! String
         
         let location = "\(borough),NY \(zipcode)"

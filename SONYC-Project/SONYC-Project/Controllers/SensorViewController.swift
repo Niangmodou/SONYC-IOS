@@ -88,7 +88,7 @@ class SensorViewController: UIViewController {
     
     //Functions to fetch data from the APIS and save them to CoreData
     func loadData(){
-        print("hi")
+        getAHVData()
         getDOBPermitData()
     }
     
@@ -116,14 +116,79 @@ class SensorViewController: UIViewController {
         task.resume()
     }
     
-    func getAFHVData(){
+    func getZipcode(location: CLLocation) -> String {
+        let geocoder: CLGeocoder = CLGeocoder()
+        var zipcode: String!
+        geocoder.reverseGeocodeLocation(location) {(placemarks, error) in
+            if error != nil {
+                print("Reverse Geocode Fail: \(error!.localizedDescription)")
+            }
+            
+            guard let placemark = placemarks?.first else {
+                return
+            }
+            print( placemark.postalCode as Any)
+            zipcode = placemark.postalCode
+        }
+        
+        return "10001"
+    }
+    
+    func getAHVData(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
         if let url = URL(string: "https://raw.githubusercontent.com/NYCDOB/ActiveAHVs/gh-pages/data/activeAHVs.csv") {
             do{
-                let contents = try String()
+                let contents = try String(contentsOf: url)
                 
                 let csv: CSV = try CSV(string: contents)
                 
-                //try enumerateDict
+                try csv.enumerateAsDict { dict in
+                    let api = "AHV"
+                    let bin = dict["BIN"]
+                    let startDate = dict["Start Date"]
+                    let endDate = dict["End Date"]
+                    
+                    //Location Data
+                    let address = dict["Address"]
+                    let borough = dict["Borough"]
+                    
+                    let latitude = (dict["Lat"]! as NSString).doubleValue
+                    let longitude = (dict["Lon"]! as NSString).doubleValue
+                    
+                    let reportLoc = CLLocation(latitude: latitude,
+                                               longitude: longitude)
+                    
+                    let zipcode = self.getZipcode(location: reportLoc)
+                    
+        
+                    let distance = Double(self.getDistance(reportLocation: reportLoc))
+                    let roundedDistance = Double(round(100*distance!)/100)
+                    let roundedDistanceString = String(roundedDistance)
+                    
+                    //Save to CoreData
+                    let context = appDelegate.persistentContainer.viewContext
+                    let entity = NSEntityDescription.entity(forEntityName: "ReportIncident", in: context)
+                    
+                    let newEntity = NSManagedObject(entity: entity!,
+                                                    insertInto: context)
+                    newEntity.setValue(api, forKey: "sonycType")
+                    newEntity.setValue(bin, forKey: "unique_id")
+                    newEntity.setValue(latitude, forKey: "latitude")
+                    newEntity.setValue(longitude, forKey: "longitude")
+                    newEntity.setValue(address, forKey: "street")
+                    newEntity.setValue(borough, forKey: "borough")
+                    newEntity.setValue(zipcode, forKey: "zipcode")
+                    newEntity.setValue(roundedDistanceString, forKey: "distance")
+                    newEntity.setValue(startDate, forKey: "startDate")
+                    newEntity.setValue(endDate, forKey: "endDate")
+                    
+                    
+                    
+                   
+                }
             }catch{
                 
             }
@@ -138,7 +203,8 @@ class SensorViewController: UIViewController {
             }
             
             let context = appDelegate.persistentContainer.viewContext
-            let entity = NSEntityDescription.entity(forEntityName: "ReportIncident", in: context)
+            let entity = NSEntityDescription.entity(forEntityName: "ReportIncident",
+                                                    in: context)
             
             for item in jsonResponse as! [Dictionary<String, AnyObject>] {
                 //print(item)
