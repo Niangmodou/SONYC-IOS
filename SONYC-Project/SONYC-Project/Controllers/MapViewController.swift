@@ -172,14 +172,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     
     //Function to plot annotations onto Map
     func plotAnnotations(data: [NSManagedObject]) {
-        print(data.count)
         
         for each in data {
             let latitude = each.value(forKey: "latitude")
             let longitude = each.value(forKey: "longitude")
             let title = each.value(forKey: "sonycType")
             
-            print("Benchmark 1 -----------")
             //Creating and plotting the DOB annotation on the map
             plotAnnotation(title: title as! String, latitude: latitude as! CLLocationDegrees, longitude: longitude as! CLLocationDegrees)
         }
@@ -306,7 +304,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     
     //Function to plot the noise complaint locations received from the 311 API
     func populate311Map(jsonResponse: Any){
-        print(1)
         //print(self.jsonResponse311 as Any)
         self.jsonResponse311 = jsonResponse as! [Dictionary<String, AnyObject>]
         for item in jsonResponse as! [Dictionary<String, AnyObject>] {
@@ -349,9 +346,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     
     //Function to plot the street construction permits obtained from the API
     func populatePermitMap(jsonResponse: Any){
-        print(3)
+
         for item in jsonResponse as! [Dictionary<String, AnyObject>] {
-            print(item)
+         
             if let longitude = (item["longitude"] as? NSString)?.doubleValue {
                 if let latitude = (item["latitude"] as? NSString)?.doubleValue {
                     print(latitude,longitude)
@@ -444,7 +441,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     //Function to get logo image based on type
     func getImage(reportType: String) -> UIImage {
         var image: UIImage!
-        print("hi:",reportType)
         if reportType == "DOB" || reportType == "AFHV" {
             image = UIImage(named: "Logo_Dob_non color.png")
         }else if reportType == "311" {

@@ -120,12 +120,14 @@ class SensorViewController: UIViewController {
         if let url = URL(string: "https://raw.githubusercontent.com/NYCDOB/ActiveAHVs/gh-pages/data/activeAHVs.csv") {
             do{
                 let contents = try String()
+                
+                let csv: CSV = try CSV(string: contents)
+                
+                //try enumerateDict
             }catch{
                 
             }
         }
-        
-        
         
     }
     
@@ -159,8 +161,11 @@ class SensorViewController: UIViewController {
                         
                         //Distance Location
                         let reportLoc = CLLocation(latitude: latitude, longitude: longitude)
-                        let distance = self.getDistance(reportLocation: reportLoc)
-                        let roundedDistance = String(format: "%.3f", distance)
+                        let distance = Double(self.getDistance(reportLocation: reportLoc))
+                        //let x = Double(distance)
+                        let roundedDistance = Double(round(100*distance!)/100)
+                        //print(y)
+                        let roundedDistanceString = String(roundedDistance)
                         
                 
                         let newEntity = NSManagedObject(entity: entity!, insertInto: context)
@@ -175,7 +180,7 @@ class SensorViewController: UIViewController {
                         newEntity.setValue(longitude, forKey: "longitude")
                         newEntity.setValue(borough, forKey: "borough")
                         newEntity.setValue(street, forKey: "street")
-                        newEntity.setValue(distance, forKey: "distance")
+                        newEntity.setValue(roundedDistanceString, forKey: "distance")
                         newEntity.setValue(zipcode, forKey: "zipcode")
                         
                         //Storing Date information
