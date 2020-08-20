@@ -23,7 +23,7 @@ class MapCardCell: UITableViewCell {
     @IBOutlet weak var permitLabel: UILabel!
     
     //Sets up the cell
-    func configure(id: String, apiType: String, logo: UIImage, distance: String, address: String, location: String, start: String, end: String) {
+    func configure(id: String, apiType: String, logo: UIImage, distance: String, address: String, location: String, start: String = "0", end: String = "0", incidentDate: String = "0") {
         
         //Setting labels to update each report
         //Setting labels to update each report
@@ -33,7 +33,13 @@ class MapCardCell: UITableViewCell {
         addressLabel.text = address
         locationLabel.text = location
         apiLabel.text = apiType
-        permitLabel.text = "Permit: \(start) to \(end)"
+        
+        if incidentDate != "0"{
+            permitLabel.text = "Incident Date: \(incidentDate)"
+        }else{
+            permitLabel.text = "Permit: \(start) to \(end)"
+        }
+        
         
         //Fitting text to label
         idLabel.sizeToFit()

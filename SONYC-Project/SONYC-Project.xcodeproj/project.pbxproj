@@ -32,6 +32,9 @@
 		526E92C224EA4607006F0B3D /* nyc311.svg in Resources */ = {isa = PBXBuildFile; fileRef = 526E92C124EA4606006F0B3D /* nyc311.svg */; };
 		526E92C424EA460C006F0B3D /* nycdob.svg in Resources */ = {isa = PBXBuildFile; fileRef = 526E92C324EA460B006F0B3D /* nycdob.svg */; };
 		526E92C624EA4610006F0B3D /* nycdot.svg in Resources */ = {isa = PBXBuildFile; fileRef = 526E92C524EA4610006F0B3D /* nycdot.svg */; };
+		5276FD4224EB1FE700ADBC93 /* dot.png in Resources */ = {isa = PBXBuildFile; fileRef = 5276FD4024EB1FE600ADBC93 /* dot.png */; };
+		5276FD4324EB1FE700ADBC93 /* dob.png in Resources */ = {isa = PBXBuildFile; fileRef = 5276FD4124EB1FE600ADBC93 /* dob.png */; };
+		5276FD4524ED89F500ADBC93 /* Location_Original.png in Resources */ = {isa = PBXBuildFile; fileRef = 5276FD4424ED89F500ADBC93 /* Location_Original.png */; };
 		528C6E5624A96F3100D7D6F1 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 528C6E5524A96F3100D7D6F1 /* MapViewController.swift */; };
 		52B2F60E24B5732100535440 /* RecordDescriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B2F60D24B5732100535440 /* RecordDescriptionViewController.swift */; };
 		52CA6EE224B75976003FB9F6 /* Logo_Dot_not color.png in Resources */ = {isa = PBXBuildFile; fileRef = 52CA6EDE24B75975003FB9F6 /* Logo_Dot_not color.png */; };
@@ -75,6 +78,9 @@
 		526E92C124EA4606006F0B3D /* nyc311.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nyc311.svg; sourceTree = "<group>"; };
 		526E92C324EA460B006F0B3D /* nycdob.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nycdob.svg; sourceTree = "<group>"; };
 		526E92C524EA4610006F0B3D /* nycdot.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nycdot.svg; sourceTree = "<group>"; };
+		5276FD4024EB1FE600ADBC93 /* dot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dot.png; sourceTree = "<group>"; };
+		5276FD4124EB1FE600ADBC93 /* dob.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dob.png; sourceTree = "<group>"; };
+		5276FD4424ED89F500ADBC93 /* Location_Original.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Location_Original.png; sourceTree = "<group>"; };
 		528C6E5524A96F3100D7D6F1 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		52B2F60D24B5732100535440 /* RecordDescriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordDescriptionViewController.swift; sourceTree = "<group>"; };
 		52CA6EDE24B75975003FB9F6 /* Logo_Dot_not color.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Logo_Dot_not color.png"; sourceTree = "<group>"; };
@@ -180,11 +186,14 @@
 				522306CB24B6C154003D54E1 /* Icon_Sleeping man.png */,
 				522306CE24B6C154003D54E1 /* Icon_Walking.png */,
 				526E92C524EA4610006F0B3D /* nycdot.svg */,
+				5276FD4124EB1FE600ADBC93 /* dob.png */,
+				5276FD4024EB1FE600ADBC93 /* dot.png */,
 				526E92C324EA460B006F0B3D /* nycdob.svg */,
 				526E92C124EA4606006F0B3D /* nyc311.svg */,
 				52CA6EE124B75975003FB9F6 /* Logo_311_non color.png */,
 				52CA6EDE24B75975003FB9F6 /* Logo_Dot_not color.png */,
 				52CA6EDF24B75975003FB9F6 /* Pin_History_non-color.png */,
+				5276FD4424ED89F500ADBC93 /* Location_Original.png */,
 			);
 			path = "Images and Logos";
 			sourceTree = "<group>";
@@ -303,15 +312,18 @@
 				52DE5D9824A188200097C63F /* Assets.xcassets in Resources */,
 				520E611824AE6725009A8304 /* Hamburger.png in Resources */,
 				522306C624B6C0A6003D54E1 /* Icon_Resting man.png in Resources */,
+				5276FD4524ED89F500ADBC93 /* Location_Original.png in Resources */,
 				522306CF24B6C155003D54E1 /* Icon_Sleeping man.png in Resources */,
 				52DE5D9624A1881C0097C63F /* Main.storyboard in Resources */,
 				522306C424B6C0A6003D54E1 /* Icon_Happy Face.png in Resources */,
 				52CA6EE324B75976003FB9F6 /* Pin_History_non-color.png in Resources */,
 				522306D124B6C155003D54E1 /* Frustrated face.png in Resources */,
+				5276FD4324EB1FE700ADBC93 /* dob.png in Resources */,
 				526E92BE24EA4462006F0B3D /* Pin_dob_non-color.png in Resources */,
 				522306C724B6C0A6003D54E1 /* Icon_Annoyed Face.png in Resources */,
 				522306C924B6C0A6003D54E1 /* Icon_Working man.png in Resources */,
 				526E92C424EA460C006F0B3D /* nycdob.svg in Resources */,
+				5276FD4224EB1FE700ADBC93 /* dot.png in Resources */,
 				522306D024B6C155003D54E1 /* Icon_Angry Face.png in Resources */,
 				526E92C024EA4473006F0B3D /* Logo_Dob_non color.png in Resources */,
 				522306CA24B6C0A6003D54E1 /* Icon_meh face.png in Resources */,

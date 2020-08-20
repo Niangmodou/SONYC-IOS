@@ -90,6 +90,32 @@ class SensorViewController: UIViewController {
     func loadData(){
         getAHVData()
         getDOBPermitData()
+        //get311Data()
+    }
+    
+    func get311Data(){
+        //print("311")
+        let url = URL(string:"https://data.cityofnewyork.us/resource/erm2-nwe9.json")
+        let task = URLSession.shared.dataTask(with: url!){ (data,response,error) in
+            //Making a call to the API and retrieving the data response
+            guard let dataResponse = data, error == nil else{
+                print(error?.localizedDescription ?? "Response Error")
+                return
+            }
+           //print(dataResponse)
+            //Retrieving the json data from the data response returned from the server
+            do{
+                //print("hi 311")
+                 let jsonResult = try JSONSerialization.jsonObject(with: dataResponse, options: []) as? [Dictionary<String, AnyObject>]
+                               
+                let apiType = "311"
+                print("BENCHMARK 0 ---------------------")
+                self.saveToCoreData(jsonResponse: jsonResult as Any, api: apiType)
+            }catch let parsingError{
+                print("Error:", parsingError)
+            }
+        }
+        task.resume()
     }
     
     func getDOBPermitData(){
@@ -105,7 +131,8 @@ class SensorViewController: UIViewController {
                 let jsonResult = try JSONSerialization.jsonObject(with: dataResponse, options: []) as? [Dictionary<String, AnyObject>]
                 
                 //print(jsonResult as Any)
-                self.saveToCoreData(jsonResponse: jsonResult as Any, api: "DOB")
+                let apiType = "DOB"
+                self.saveToCoreData(jsonResponse: jsonResult as Any, api: apiType)
                 
                 
             }catch let parsingError{
@@ -119,6 +146,7 @@ class SensorViewController: UIViewController {
     func getZipcode(location: CLLocation) -> String {
         let geocoder: CLGeocoder = CLGeocoder()
         var zipcode: String!
+        /*
         geocoder.reverseGeocodeLocation(location) {(placemarks, error) in
             if error != nil {
                 print("Reverse Geocode Fail: \(error!.localizedDescription)")
@@ -130,6 +158,7 @@ class SensorViewController: UIViewController {
             print( placemark.postalCode as Any)
             zipcode = placemark.postalCode
         }
+         */
         
         return "10001"
     }
@@ -185,9 +214,6 @@ class SensorViewController: UIViewController {
                     newEntity.setValue(startDate, forKey: "startDate")
                     newEntity.setValue(endDate, forKey: "endDate")
                     
-                    
-                    
-                   
                 }
             }catch{
                 
@@ -206,59 +232,120 @@ class SensorViewController: UIViewController {
             let entity = NSEntityDescription.entity(forEntityName: "ReportIncident",
                                                     in: context)
             
-            for item in jsonResponse as! [Dictionary<String, AnyObject>] {
-                //print(item)
-                if let longitude = (item["gis_longitude"] as? NSString)?.doubleValue {
-                    if let latitude = (item["gis_latitude"] as? NSString)?.doubleValue {
-                        
-                        //Job Data
-                        let id = (item["bin__"]) as! String
-                        let job_type = item["job_type"] as! String
-                        
-                        //Location Data
-                        let house = item["house__"]
-                        let borough = item["borough"]
-                        let street = item["street_name"]
-                        let zipcode = item["zip_code"]
-                        
-                        //Date Information
-                        let startDate = item["job_start_date"]
-                        let endDate = item["expiration_date"]
-                        
-                        //Distance Location
-                        let reportLoc = CLLocation(latitude: latitude, longitude: longitude)
-                        let distance = Double(self.getDistance(reportLocation: reportLoc))
-                        //let x = Double(distance)
-                        let roundedDistance = Double(round(100*distance!)/100)
-                        //print(y)
-                        let roundedDistanceString = String(roundedDistance)
-                        
-                
-                        let newEntity = NSManagedObject(entity: entity!, insertInto: context)
-                        
-                        newEntity.setValue(job_type, forKey: "job_type")
-                        newEntity.setValue(id, forKey: "unique_id")
-                        newEntity.setValue(api, forKey: "sonycType")
+            if api == "DOB" {
+                for item in jsonResponse as! [Dictionary<String, AnyObject>] {
+                    //print(item)
+                    if let longitude = (item["gis_longitude"] as? NSString)?.doubleValue {
+                        if let latitude = (item["gis_latitude"] as? NSString)?.doubleValue {
                             
-                        //Stores location data
-                        newEntity.setValue(house, forKey: "house_num")
-                        newEntity.setValue(latitude, forKey: "latitude")
-                        newEntity.setValue(longitude, forKey: "longitude")
-                        newEntity.setValue(borough, forKey: "borough")
-                        newEntity.setValue(street, forKey: "street")
-                        newEntity.setValue(roundedDistanceString, forKey: "distance")
-                        newEntity.setValue(zipcode, forKey: "zipcode")
-                        
-                        //Storing Date information
-                        newEntity.setValue(startDate, forKey: "startDate")
-                        newEntity.setValue(endDate, forKey: "endDate")
+                            //Job Data
+                            let id = (item["bin__"]) as! String
+                            let job_type = item["job_type"] as! String
+                            
+                            //Location Data
+                            let house = item["house__"]
+                            let borough = item["borough"]
+                            let street = item["street_name"]
+                            let zipcode = item["zip_code"]
+                            
+                            //Date Information
+                            let startDate = item["job_start_date"]
+                            let endDate = item["expiration_date"]
+                            
+                            //Distance Location
+                            let reportLoc = CLLocation(latitude: latitude, longitude: longitude)
+                            
+                            let distance = Double(self.getDistance(reportLocation: reportLoc))
+                            //let x = Double(distance)
+                            let roundedDistance = Double(round(100*distance!)/100)
+                            //print(y)
+                            let roundedDistanceString = String(roundedDistance)
+                            
                     
+                            let newEntity = NSManagedObject(entity: entity!,
+                                                            insertInto: context)
+                            
+                            newEntity.setValue(job_type, forKey: "job_type")
+                            newEntity.setValue(id, forKey: "unique_id")
+                            newEntity.setValue(api, forKey: "sonycType")
+                                
+                            //Stores location data
+                            newEntity.setValue(house, forKey: "house_num")
+                            newEntity.setValue(latitude, forKey: "latitude")
+                            newEntity.setValue(longitude, forKey: "longitude")
+                            newEntity.setValue(borough, forKey: "borough")
+                            newEntity.setValue(street, forKey: "street")
+                            newEntity.setValue(roundedDistanceString, forKey: "distance")
+                            newEntity.setValue(zipcode, forKey: "zipcode")
+                            
+                            //Storing Date information
+                            newEntity.setValue(startDate, forKey: "startDate")
+                            newEntity.setValue(endDate, forKey: "endDate")
                         
-                    }else{
-                        print("error")
+                            
+                        }else{
+                            print("error")
+                        }
+                    }
+                }
+            }else if api == "311" {
+                //print(jsonResponse)
+                for item in jsonResponse as! [Dictionary<String, AnyObject>] {
+                    if let longitude = (item["longitude"] as? NSString)?.doubleValue {
+                        if let latitude = (item["latitude"] as? NSString)?.doubleValue {
+                            
+                            let id = item["unique_key"] as! String
+                            
+                            let incidentDate = item["created_date"] as! String
+                            print(incidentDate)
+                            
+                            let borough = item["borough"] as! String
+                            let zipcode = item["incident_zip"] as! String
+                            
+                            /*
+                            let addressType = item["address_type"] as! String
+                            */
+                            var address: String!
+                            do{
+                                address = try item["incident_address"] as! String
+                            }catch{
+                                let street1 = item["intersection_street_1"]
+                                let street2 = item["intersection_street_2"]
+                                
+                                address = "\(street1) and \(street2)"
+                            }
+                            
+                            //Getting distance information
+                            //Distance Location
+                            let reportLoc = CLLocation(latitude: latitude, longitude: longitude)
+                            
+                            let distance = Double(self.getDistance(reportLocation: reportLoc))
+                            //let x = Double(distance)
+                            let roundedDistance = Double(round(100*distance!)/100)
+                            //print(y)
+                            let roundedDistanceString = String(roundedDistance)
+                            print("BENCHMARK 1 ---------------------")
+                            //Storing incident information
+                            let newEntity = NSManagedObject(entity: entity!,
+                                                            insertInto: context)
+                            
+                            newEntity.setValue(id, forKey: "unique_id")
+                            newEntity.setValue(api, forKey: "sonycType")
+                            newEntity.setValue(latitude, forKey: "latitude")
+                            newEntity.setValue(longitude, forKey: "longitude")
+                            newEntity.setValue(roundedDistanceString, forKey: "distance")
+                            newEntity.setValue(borough, forKey: "borough")
+                            newEntity.setValue(zipcode, forKey: "zipcode")
+                            newEntity.setValue(address, forKey: "street")
+                            newEntity.setValue(incidentDate, forKey: "incidentDate")
+                            
+                            print("BENCHMARK 2 ---------------------")
+                            
+                        }
                     }
                 }
             }
+            
         }
         
     }

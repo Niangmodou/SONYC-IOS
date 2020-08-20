@@ -14,7 +14,7 @@ import MapKitGoogleStyler
 import CoreLocation
 import CoreData
 
-class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegate{
+class MapViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate{
     
     //Variable to reference to the map
     @IBOutlet weak var mapView: MKMapView!
@@ -34,37 +34,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     //Variable to reference the table view
     @IBOutlet weak var tableView: UITableView!
     
-    //Variables to represent cell labels
-    @IBOutlet weak var latLabel: UILabel!
-    @IBOutlet weak var lonLabel: UILabel!
-    @IBOutlet weak var typeLabel: UILabel!
-    
-    //Variable to reference the address label within the TableView
-    @IBOutlet weak var addressLabel: UILabel!
-    
-    //Varaible to reference the distance for each location within the TableView
-    @IBOutlet weak var distance: UILabel!
-    
     //Dictionary to store buttons and image name
     var reportButtons: [UIButton:String] = [:]
-    
-    
-    //Outlets to reference the cell labels
-    //@IBOutlet weak var typeLabel: UILabel!
-    //@IBOutlet weak var lonLabel: UILabel!
-    //@IBOutlet weak var latLabel: UILabel!
-    
-    //Variables to store the json returned from the APIs
-    var jsonResponse311: Any!
-    var jsonResponseDOB: Any!
-    var jsonResponseStreet: Any!
     
     //9th Avenue and 34th Street latitude and longitude
     let startLatitude = 40.753365
     let startLongitude = -73.996367
-    
-    //Dictionary to store items for table view
-    let dataDict: [String:[Double]] = ["After Hour Variances":[]]
     
     //Varaible to store retrieved data from CoreData
     var myData: [NSManagedObject] = []
@@ -79,14 +54,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         configureTileOverlay()
         populateButtonDictionary()
         styleButtons()
-        //getDOBPermitData()
-        //get311Data()
-        //print(self.jsonResponseDOB as Any)
-        //configureSearchBar()
-        
-        
+
         mapView.delegate = self
         
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.tableView.allowsSelection = true
     
         let location = CLLocationCoordinate2D(latitude: startLatitude, longitude: startLongitude)
         centerMapOnLocation(location, mapView: mapView)
@@ -95,7 +68,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         let loc = MKPointAnnotation()
         
         loc.coordinate = CLLocationCoordinate2D(latitude: startLatitude, longitude: startLongitude)
-        loc.title = title
+        loc.title = "Current"
         
         mapView.addAnnotation(loc)
         
@@ -104,9 +77,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         longPress.minimumPressDuration = 1.5 // in seconds
         //add gesture recognition
         mapView.addGestureRecognizer(longPress)
-        
-        //tableView.delegate = self
-        //tableView.dataSource = self
+
     }
     
     private func configureTileOverlay() {
@@ -137,20 +108,47 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         do{
             //Loading data from CoreData
             myData = try context.fetch(fetch)
-            //print(myData)
+            
             //Plot annotations onto Map
             plotAnnotations(data: myData)
             
+            //Sort Data array
+            /*
+            myData.sort(by: {
+                guard let first: Float = ($0.value(forKey: "distance") as! Float) else {}
+                guard let second: Float = ($1.value(forKey: "distance") as! Float) else {}
+                
+                return first < second
+                
+            })
+            */
         }catch let error{
             print("Error: \(error)")
         }
     }
     
+    func deleteAllData(){
+          let appDelegate = UIApplication.shared.delegate as! AppDelegate
+          let managedContext = appDelegate.persistentContainer.viewContext
+          let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Recording")
+          fetchRequest.returnsObjectsAsFaults = false
+
+          do{
+              let results = try managedContext.fetch(fetchRequest)
+              for managedObject in results{
+                  let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
+                  managedContext.delete(managedObjectData)
+              }
+          } catch let error {
+              print("Error: \(error) :(")
+          }
+      }
+    
     //Function to center map on New York City
     func centerMapOnLocation(_ location: CLLocationCoordinate2D, mapView: MKMapView) {
         let regionRadius: CLLocationDistance = 5000
         let coordinateRegion = MKCoordinateRegion(center: location,
-                                                  latitudinalMeters: regionRadius * 0.25, longitudinalMeters: regionRadius * 0.25)
+                                                  latitudinalMeters: regionRadius * 0.0625, longitudinalMeters: regionRadius * 0.0625)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
@@ -194,174 +192,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         mapView.addAnnotation(loc)
     }
     
-    //Function to get after hours variances csv data
-    //func
-    
-    //Function to geocode address to a latitude and longitude
-    func getCoordFromAddress() {
-        
-    }
-    
-//REFACTOR CODE TO MAKE CODE DRY CODENSE THESE FUNCTIONS -----------------------------------------------------
-    //Function to fetch and query data using Socrata
-    func getDataSocrata(){
-        //let client = SODAClient(domain: "https://data.cityofnewyork.us/resource/tqtj-sjs8.json", token: "uoF7GWNArky47qzdc4kD2S4RV")
-    }
-    
-    //Function to get noise complaint data from the 311 API
-    func get311Data(){
-        //print(1)
-        //var jsonResponse: Any!
-        let url = URL(string:"https://data.cityofnewyork.us/resource/ipu4-2q9a.json?zip_code=10001")
-        let task = URLSession.shared.dataTask(with: url!){ (data,response,error) in
-            //Making a call to the API and retrieving the data response
-            guard let dataResponse = data, error == nil else {
-                print(error?.localizedDescription ?? "Response Error")
-                return
-            }
-            
-            //Retrieving the json data from the data response returned from the server
-            do{
-                self.jsonResponse311 = try JSONSerialization.jsonObject(with: dataResponse, options: []) as? [Dictionary<String, AnyObject>]
-                
-                self.populate311Map(jsonResponse: self.jsonResponse311 as Any)
-                //print(self.jsonResponse311 as Any)
-                
-        
-            }catch let parsingError{
-                print("Error:", parsingError)
-            }
-        }
-        //print(self.jsonResponse311 as Any)
-        task.resume()
-        //return jsonResponse as Any
-    }
-    
-    
-    
-    
-    //Function to get building data from the DOB permit API
-    func getDOBPermitData(){
-        //print(2)
-        //var jsonResponse: Any!
-        
-        let url = URL(string: "https://data.cityofnewyork.us/resource/ipu4-2q9a.json?zip_code=10001")
-        //var jsonResult: [Dictionary<String, AnyObject>]!
-        let task = URLSession.shared.dataTask(with: url!){ (data,response,error) in
-            //Making a call to the API and retrieving the data response
-            guard let dataResponse = data, error == nil else{
-                print(error?.localizedDescription ?? "Response Error")
-                return
-            }
-            do{
-                self.jsonResponseDOB = try JSONSerialization.jsonObject(with: dataResponse, options: []) as? [Dictionary<String, AnyObject>]
-                //self.jsonResponseDOB = jsonResult
-                self.populateDOBMap(jsonResponse: self.jsonResponseDOB as Any)
-                //print("hi")
-                /*
-                if let jsonResult = try JSONSerialization.jsonObject(with: dataResponse, options: []) as? [String: Any] {
-                    DispatchQueue.main.async {
-                        self.jsonResponseDOB = try JSONSerialization.jsonObject(with: dataResponse, options: [])
-                        self.populateDOBMap(jsonResponse: self.jsonResponseDOB as Any)
-                    }
-                }
-                */
-                //print(self.jsonResponseDOB)
-                
-                
-            }catch let parsingError{
-                print("Error:", parsingError)
-            }
-            
-        }
-        task.resume()
-        //print(jsonResponseDOB)
-        //return jsonResult as Any
-    }
-//Radius - 500m
-//34th - 9th
-/*
-    //Function to get street construction permit data from the API
-    func getStreetPermitData(){
-        let url = URL(string: "https://data.cityofnewyork.us/resource/tqtj-sjs8.json")
-        let task = URLSession.shared.dataTask(with: url!){ (data,response,error) in
-            //Making a call to the API and retrieving the data response
-            guard let dataResponse = data, error == nil else{
-                print(error?.localizedDescription ?? "Response Error")
-                return
-            }
-            do{
-                self.jsonResponseStreet = try JSONSerialization.jsonObject(with: dataResponse, options: [])
-                print(self.jsonResponseStreet)
-                self.populatePermitMap(jsonResponse: self.jsonResponseStreet as Any)
-            }catch let parsingError{
-                print("Error:", parsingError)
-            }
-        }
-    }
-     */
-    
-    
-    //Function to plot the noise complaint locations received from the 311 API
-    func populate311Map(jsonResponse: Any){
-        //print(self.jsonResponse311 as Any)
-        self.jsonResponse311 = jsonResponse as! [Dictionary<String, AnyObject>]
-        for item in jsonResponse as! [Dictionary<String, AnyObject>] {
-            if let longitude = (item["longitude"] as? NSString)?.doubleValue {
-                if let latitude = (item["latitude"] as? NSString)?.doubleValue {
-                    
-                    let title = "311 pin"
-                    
-                    //Creating and plotting the 311 annotation on the map
-                    plotAnnotation(title: title, latitude: latitude, longitude: longitude)
-                }else{
-                    print("error")
-                }
-            }
-        }
-        
-        
-    }
-    
-    //Function to plot the buildings under construction obtained from the DOB permit data API
-    func populateDOBMap(jsonResponse: Any){
-        //print(2)
-        self.jsonResponseDOB = jsonResponse as! [Dictionary<String, AnyObject>]
-        for item in jsonResponse as! [Dictionary<String, AnyObject>] {
-            //print(item)
-            if let longitude = (item["gis_longitude"] as? NSString)?.doubleValue {
-                if let latitude = (item["gis_latitude"] as? NSString)?.doubleValue {
-                    //print(latitude,longitude)
-                    let title = "DOB pin"
-                    
-                    //Creating and plotting the DOB annotation on the map
-                    plotAnnotation(title: title, latitude: latitude, longitude: longitude)
-                }else{
-                    print("error")
-                }
-            }
-        }
-    }
-    
-    
-    //Function to plot the street construction permits obtained from the API
-    func populatePermitMap(jsonResponse: Any){
-
-        for item in jsonResponse as! [Dictionary<String, AnyObject>] {
-         
-            if let longitude = (item["longitude"] as? NSString)?.doubleValue {
-                if let latitude = (item["latitude"] as? NSString)?.doubleValue {
-                    print(latitude,longitude)
-                    let title = "Permit pin"
-                    
-                    //Creating and plotting the permit annontation on the map
-                    plotAnnotation(title: title, latitude: latitude, longitude: longitude)
-                }
-            }
-        }
-    }
-    
-    
     //Function to populate dictionary button
     func populateButtonDictionary(){
         reportButtons = [
@@ -386,28 +216,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
             button.layer.borderWidth = 1
         }
     }
-    
-    func deleteAllData(){
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let managedContext = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Recording")
-        fetchRequest.returnsObjectsAsFaults = false
 
-        do{
-            let results = try managedContext.fetch(fetchRequest)
-            for managedObject in results{
-                let managedObjectData:NSManagedObject = managedObject as! NSManagedObject
-                managedContext.delete(managedObjectData)
-            }
-        } catch let error {
-            print("Error: \(error) :(")
-        }
-    }
-    
-    
-    
     //Fucntion to add image to an annotation
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        print("hi")
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "AnnotationView")
         
         if annotationView == nil {
@@ -416,12 +228,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         
         if annotation.title == "311 pin" {
             annotationView?.image = UIImage(named: "Pin_311_non-color.png")
-        }else if annotation.title == "DOB" {
+        }else if annotation.title == "DOB" || annotation.title == "AHV" {
+            print("hi")
             annotationView?.image = UIImage(named: "Pin_dob_non-color.png")
-        }else {
+        }else if annotation.title == "Current"{
+            print("hi")
+            annotationView?.image = UIImage(named: "Location_Original.png")
+        }/*else {
             annotationView?.image = UIImage(named: "Pin_History_non-color.png")
         }
-        
+         */
         
         return annotationView
     }
@@ -442,7 +258,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
     func getImage(reportType: String) -> UIImage {
         var image: UIImage!
         if reportType == "DOB" || reportType == "AHV" {
-            image = UIImage(named: "Logo_Dob_non color.png")
+            //print("hi")
+            image = UIImage(named: "dob.png")
         }else if reportType == "311" {
             image = UIImage(named: "Logo_311_non color.png")
         }else if reportType == "DOT" {
@@ -476,19 +293,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, UISearchBarDelegat
         let _: CLLocationCoordinate2D = mapView.convert(touchedAt, toCoordinateFrom: self.mapView)
     }
     
-    /*
     //Function to retrieve google maps overlay and style the map
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             if let tileOverlay = overlay as? MKTileOverlay {
                 return MKTileOverlayRenderer(tileOverlay: tileOverlay)
             } else {
                 return MKOverlayRenderer(overlay: overlay)
-     _  }
+       }
     }
- 
- */
-    
 }
+
+
 
 extension MapViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -497,12 +312,10 @@ extension MapViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "mapCardCell", for: indexPath) as! MapCardCell
-        //cell.textLabel?.text = dataDict[indexPath.row]
         
         //Get the contents of the current row
         let currentRow = myData[indexPath.row]
         
-        //Parsing information from currentRow
         //Parsing information from currentRow
         let api = currentRow.value(forKey: "sonycType") as! String
         let type = getType(api: api)
@@ -511,43 +324,78 @@ extension MapViewController: UITableViewDataSource {
         let id = currentRow.value(forKey: "unique_id") as! String
         
         var address: String!
+        var startDate: String!
+        var endDate: String!
+        var incidentDate: String!
         
         if api == "DOB" {
-            let house = try currentRow.value(forKey: "house_num") as! String
-            let street = try currentRow.value(forKey: "street") as! String
+            let house = currentRow.value(forKey: "house_num") as! String
+            let street = currentRow.value(forKey: "street") as! String
         
             address = "\(house) \(street)"
-        }else{
+            
+            startDate = (currentRow.value(forKey: "startDate") as! String)
+            endDate = (currentRow.value(forKey: "endDate") as! String)
+        }else if api == "AHV"  {
             address = (currentRow.value(forKey: "street") as! String)
+            startDate = (currentRow.value(forKey: "startDate") as! String)
+            endDate = (currentRow.value(forKey: "endDate") as! String)
+        }else if api == "311" {
+            address = (currentRow.value(forKey: "street") as! String)
+            
+            incidentDate = (currentRow.value(forKey: "created_date") as! String)
         }
+        
         let borough = currentRow.value(forKey: "borough") as! String
         let zipcode = currentRow.value(forKey: "zipcode") as! String
         
         //Getting the logo image based on which type of recording
-        let image = getImage(reportType: api as! String)
+        let image = getImage(reportType: api)
         
         let distance = currentRow.value(forKey: "distance") as! String
         
         let location = "\(borough),NY \(zipcode)"
-        //Date Information
-        let startDate = currentRow.value(forKey: "startDate") as! String
-        let endDate = currentRow.value(forKey: "endDate") as! String
+   
     
+        if api == "311" {
+            print("BENCHMARK 3 ---------------------")
+            cell.configure(id: id,
+                           apiType: type,
+                           logo: image,
+                           distance: distance,
+                           address: address,
+                           location: location,
+                           incidentDate: incidentDate)
+        }else {
+            cell.configure(id: id,
+                           apiType: type,
+                           logo: image,
+                           distance: distance,
+                           address: address,
+                           location: location,
+                           start: startDate,
+                           end: endDate)
+        }
         
-        cell.configure(id: id,
-                       apiType: type,
-                       logo: image,
-                       distance: distance,
-                       address: address,
-                       location: location,
-                       start: startDate,
-                       end: endDate)
         return cell
     }
 }
 
 extension MapViewController: UITableViewDelegate{
     //Displaying a tapped location on the map
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Get the contents of the current row
+        let currentRow = myData[indexPath.row]
+        
+        //Extracting lat and lon
+        let latitude = currentRow.value(forKey: "latitude") as! CLLocationDegrees
+        let longitude = currentRow.value(forKey: "longitude") as! CLLocationDegrees
+        print(latitude, longitude)
+        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+       
+        //Focusing map on that location
+        centerMapOnLocation(location, mapView: mapView)
+
+    }
     
 }
