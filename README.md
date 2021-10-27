@@ -1,5 +1,4 @@
-# SONYC-Initial-Project
-Initial Development Task for SONYC Project
+# SONYC-IOS-APP
 
 1) Record 10 sec audio clips using the phone's microphone and store the clip locally (make sure you can delete the clips too)
 
